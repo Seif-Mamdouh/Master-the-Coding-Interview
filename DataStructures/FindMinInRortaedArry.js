@@ -9,7 +9,7 @@
 
 // You must write an algorithm that runs in O(log n) time.
 
- 
+
 
 // Example 1:
 
