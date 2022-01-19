@@ -55,6 +55,31 @@ var numSubarrayProductLessThanK = function (nums, k) {
   return count;
 };
 
+
+var numSubarrayProductLessThanK = function (nums, k) {
+  let length = nums.length;
+  let counter = 0;
+  for (let i = 0; i < length; i++) {
+    let product = nums[i];
+    if (product < k) {
+      counter += 1;
+    } else {
+      continue;
+    }
+    for (let j = i + 1; j < length; j++) {
+      product *= nums[j];
+      if (product < k) {
+        counter += 1;
+      } else {
+        break;
+      }
+    }
+  }
+  return counter;
+};
+
+
+
 //Okay this is interesting
 //so basically, we have an array of unsorted indexes.
 //we need to split the array into all subarrays
