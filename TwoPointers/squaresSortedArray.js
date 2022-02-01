@@ -18,12 +18,11 @@
 // Output: [4,9,9,49,121]
 
 
-
-
 var sortedSquares = function (nums) {
+  let length = nums.length;
   let temp = 0;
 
-  for (i = 0; i < nums.length; i++) {
+  for (let i = 0; i < length; i++) {
     temp = Math.pow(nums[i], 2);
     nums[i] = temp;
   }
@@ -31,8 +30,13 @@ var sortedSquares = function (nums) {
   nums.sort(function (a, b) {
     return a - b;
   });
+
   return nums;
 };
+
+
+
+
 
 var sortedSquares = function (A) {
   let sqrtNums = A.map((n) => n * n);
