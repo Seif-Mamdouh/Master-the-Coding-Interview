@@ -35,9 +35,6 @@ var sortedSquares = function (nums) {
 };
 
 
-
-
-
 var sortedSquares = function (A) {
   let sqrtNums = A.map((n) => n * n);
   let sortNums = sqrtNums.sort((a, b) => a - b);
