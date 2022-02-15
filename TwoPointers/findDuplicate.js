@@ -32,20 +32,36 @@ var findDuplicate = function(nums) {
             break;
         }
     }
-//     let turtle2 = 0; 
-//     while(true){
-//         turtle2 = nums[turtle2]; 
-//         turtle = nums[turtle]; 
+    let turtle2 = 0; 
+    while(true){
+        turtle2 = nums[turtle2]; 
+        turtle = nums[turtle]; 
         
-//         if(turtle2 === turtle){
-//             return turtle;
-//         }
-//     }
+        if(turtle2 === turtle){
+            return turtle;
+        }
+    }
 
 
 };
 
 
+//insanely effiecent way to solve 
+var findDuplicate = function(nums) {
+  let n = nums.length;
+  let arr = [];
+  for(let i = 0; i < nums.length; i++) {
+    arr.push(nums[i]);
+  }
+  for(let i = 0; i < nums.length; i++) {
+    arr[nums[i]] = arr[nums[i]] + n;
+  }
+  for(let i = 0; i < nums.length; i++) {
+    if(Math.floor(arr[i] / n) > 1) {
+      return i;
+    }
+  }
+};
 
 //This might be tge fastest I have ever came up with an answer. 
 //So I started with assgining two pointers at the start of the array
