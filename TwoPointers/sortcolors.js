@@ -33,7 +33,9 @@
 
 
 var sortColors = function (nums) {
-  // nums.sort()
+  nums.sort();
+
+  or......
 
   let start = 0;
   let end = nums.length - 1;
@@ -43,7 +45,7 @@ var sortColors = function (nums) {
     if (nums[index] == 0) {
       nums[index] == nums[start];
       nums[start] = 0;
-      start++;
+      // start++;
       index++;
     } else if (nums[index] == 2) {
       nums[index] = nums[end];
@@ -54,3 +56,4 @@ var sortColors = function (nums) {
     }
   }
 };
+
