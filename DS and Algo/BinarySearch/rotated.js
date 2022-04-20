@@ -33,3 +33,6 @@ var search = function (nums, target) {
   // Reached the final number; return it if it matches the target, else target was not found
   return nums[low] == target ? low : -1;
 };
+
+
+//somtimes I just wanna to code in Java but I dont like it, but it's just a 12 am thought, don't judge me
