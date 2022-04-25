@@ -65,3 +65,6 @@ var hasCycle = function(head) {
   }
   return false
 };
+
+//just a word out there
+//life is a bitch then you do die. 
