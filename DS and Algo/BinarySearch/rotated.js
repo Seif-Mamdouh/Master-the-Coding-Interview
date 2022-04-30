@@ -35,7 +35,3 @@ var search = function (nums, target) {
 };
 
 
-//somtimes I just wanna to code in Java but I dont like it, but it's just a 12 am thought, don't judge me
-//intersting
-//damn sometimes people do be in their feelings.
-//But u know we can all agree at the end of the day. That life is a bitch then u die.
