@@ -59,4 +59,7 @@
     let arr = [ 2, 3, 4, 5, 7 ];
     let n = arr.length;
     let max_sum = maxSubArraySum(arr, 0, n - 1);
-    document.write("Maximum contiguous sum is " + max_sum);
+document.write("Maximum contiguous sum is " + max_sum);
+    
+
+//Damn I cant beielive that it's been a year snce I started learning this.
