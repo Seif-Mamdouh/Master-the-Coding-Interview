@@ -15,3 +15,6 @@ var searchInsert = function(nums, target) {
     }
     return l;
     };
+
+
+    //lets get faded
