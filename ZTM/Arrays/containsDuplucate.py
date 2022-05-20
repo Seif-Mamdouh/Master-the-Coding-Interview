@@ -33,4 +33,6 @@ class Solution:
                 return True
             hashset.add(n)
         return False
-gi
+
+
+#this fucking crazy I'm about to fly people out from the UK
