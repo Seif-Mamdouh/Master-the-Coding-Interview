@@ -22,3 +22,6 @@ var topKFrequent = function (nums, k) {
   }
   return ans;
 };
+
+// get() method in JavaScript is used for returning a specific element among all the elements which are present in a map
+// set() object lets you store unique values of any type
