@@ -36,6 +36,7 @@
 
 // Solutions
 
+//normal two pointers
 var twoSum = function (nums, target) {
   let left = 0;
   let right = nums.length - 1;
@@ -52,3 +53,17 @@ var twoSum = function (nums, target) {
     }
   }
 };
+
+//Hash Map
+var twoSum = function (nums, target) {
+    
+    let m = new Map();
+
+    for (let i = 0; i < nums.length; i++) {
+        if (m.has(target - nums[i])) {
+            return [m.get(target - nums[i]), i + 1];
+        }
+        m.set(nums[i], i + 1);
+
+    }
+}
