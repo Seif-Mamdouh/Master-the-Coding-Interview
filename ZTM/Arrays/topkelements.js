@@ -25,3 +25,9 @@ var topKFrequent = function (nums, k) {
 
 // get() method in JavaScript is used for returning a specific element among all the elements which are present in a map
 // set() object lets you store unique values of any type
+//Map() helps to store any data type as a key. a normal 
+  //object can store strings data type as a key. Maps has also maintain insertion order.
+  //objects have no insertion order. Everything is all over the place. 
+// Set() is an interesting feature of JS. It only stores keys 
+
+
