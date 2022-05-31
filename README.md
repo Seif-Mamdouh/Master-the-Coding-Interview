@@ -30,7 +30,7 @@ https://github.com/Hengle/leetcode-2
 https://neetcode.io/
 
 
-Summer 2022 Internships
+Summer 2023 Internships
 
 https://github.com/pittcsc/Summer2022-Internships
 
