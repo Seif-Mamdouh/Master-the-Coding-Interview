@@ -17,3 +17,6 @@ var productExceptSelf = function (nums) {
   }
   return output;
 };
+
+
+//this is going to be interesting
