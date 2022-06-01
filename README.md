@@ -38,3 +38,6 @@ https://leetcode.com/discuss/interview-question/1271316/uber-oa-university-2021-
 
 NeetCode
 https://neetcode.io/
+
+Array LC Patterns
+https://leetcode.com/discuss/general-discussion/1134565/approaching-almost-any-string-question
