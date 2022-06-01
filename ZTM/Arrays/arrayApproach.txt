@@ -1,0 +1,29 @@
+"Premature optimization is the root of all evil" - Knuth, Donald.
+
+This goes for String Questions on Leetcode
+
+Type I:
+When it is required to validate the string or to find something in the string.
+ In such questions, it is required to traverse the string like an array whilst
+  validating or finding something.
+
+
+Type II
+When you need to search a substring/another string. 
+Most of such questions can be solved using pointer based approach.
+ One/more pointer approach.
+
+
+Type III
+When you need to find the smallest/largest/ conditional substring from the given string, 
+sliding window approach is the way to go. An example of such question would be: 
+find the longest substring without repeating character.
+
+Type IV
+When the problem needs you to find all the permutations of a string, 
+backtracking is the most common approach for such problems.
+
+
+Type V
+Whenever the above approach do not fit, its most likely a question on Dynamic Programming. 
+Try to identify the subproblem and solve using DP.
