@@ -43,3 +43,6 @@ var hammingWeight = function (n) {
   }
   return count;
 };
+
+
+//I will make sure I will never work a corprate job ever again
