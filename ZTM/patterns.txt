@@ -1,0 +1,29 @@
+1- Sliding Window 
+- A pattern that is mainly used to perform a lot of operations more efficiently. Pattern and used when working LL or Arrays.
+- The pattern starts from from the 1st element and keep shifting right by one element and adjust the length of the window size remains constant and in other cases the sizes grows or shrinks.
+
+Here’s how you identify if the question can allow you to use SW
+
+- The problem is in a LL, array or string
+- You are asked to find longest/shortest substring, subarray or a desired value.
+    - Some LC Questions
+        - [Maximum sum subarray of size ‘K’](https://leetcode.com/problems/maximum-subarray/) (easy)
+        - [Longest substring with ‘K’ distinct characters](https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters/) (medium)
+        - [String anagrams](https://leetcode.com/problems/find-all-anagrams-in-a-string/) (hard)
+
+2- Two Pointers 
+- It’s a pattern where iterate through the data structure in tandem until one or both pointers hit a certain a condition.
+- Two Pointers is often useful when looking for pairs in a sorted array or LL
+    - If you need to compare each element in the array to it’s other indices.
+- Two pointers is efficient because it avoids the back and forth iteration within a loop.
+
+Ways to identify when to use the Two Pointer method:
+
+- Problems where you deal with sorted arrays (or Linked Lists) and need to find a set of elements that fulfill certain constraints
+- The set of elements in the array is a pair, a triplet, or even a subarray
+
+LC Problems
+
+- [Squaring a sorted array](https://leetcode.com/problems/squares-of-a-sorted-array/) (easy)
+- [Triplets that sum to zero](https://leetcode.com/problems/3sum/) (medium)
+- [Comparing strings that contain backspaces](https://leetcode.com/problems/backspace-string-compare/) (medium)
