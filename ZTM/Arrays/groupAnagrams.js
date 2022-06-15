@@ -41,33 +41,3 @@ const groupAnagrams = function (strs) {
   return Object.values(groups);
 };
 
-//damn
-
-
-const groupAnagrams = function (strs) {
-  let words = {};
-  let collectedWords = [];
-
-  //iterate through words
-  for (let str of strs) {
-    //words hash to find and store arrays of words
-
-    //sorts the letters
-    let letters = str.split("").sort().join("");
-
-    //create a hash key-value pair of the sorted letters of the word if it doesn't exist.
-    words[letters] = words[letters] || [];
-
-    //add word to value of the key which matches its letters
-    words[letters].push(str);
-  }
-
-  //push these arrrays into the collectedwords array
-
-  //time to iterate through words hash keys
-  for (let key in words) {
-    collectedWords.push(words[key]);
-  }
-
-  return collectedWords;
-};
