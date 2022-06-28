@@ -30,12 +30,6 @@ Explanation: The answer is "wke", with the length of 3.
 Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
 
 
-
-/**
- * @param {string} s
- * @return {number}
- */
-
 var lengthOfLongestSubstring = function (s) {
     // Store counters for the the start of the window and the longest string's length
     var startOfWindow = 0,
@@ -100,5 +94,5 @@ var lengthOfLongestSubstring = function(s) {
 // Sliding Window uses two pointers to define the boundary of the subset (this is the window). In this example left and i are the left and right pointers, respectively.
 // 
 // To solve the problem of finding the longest unique substring we use Set to store the characters. Before adding to the Set we first check if it already exists. If it does exist, we remove all the characters in the Set from the left (using our left pointer) until the duplicate character has been removed.
-// 
 // maxLength tracks the largest substring, after each iteration we set maxLength to itself or the size of the Set which ever is largest.
+// This interesting 
