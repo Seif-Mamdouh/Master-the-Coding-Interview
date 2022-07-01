@@ -34,6 +34,27 @@ var maxArea = function (height) {
 };
 
 
+
+var maxArea = function(height){
+    let begin = 0; 
+    let end = height.length - 1; 
+    let max_area = 0;
+    
+    while(begin < end){
+        max_area = Math.max(max_area ,Math.min(height[begin], height[end]) * (end - begin));
+        
+        if(height[begin] >= height[end]){
+            end--
+        } else {
+            begin ++;
+        }
+    }
+    
+    return max_area;
+}
+
+
+
 Let’s say we have an initial input, height = [1,8,6,2,5,4,8,3,7]
 
 In our first loop, i = 0, j = 8(remember, these are indexes, not values).
