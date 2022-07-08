@@ -47,26 +47,31 @@ minStack.getMin(); // return -2
 //answer
 
 function last(stack){
+    //having access to the last element in the stack
     return stack[stack.length - 1]
 }
 class MinStack {
+    //creating our stack and minstskc
     constructor(){
         this.stack = []
         this.minStack = []
     }
 push(x){
-        if(this.minStack.length === 0 || x <= last(this.minStack)){
-            this.minStack.push(x)
+    //pushing everythiung into the mainStack, however we are also trying to match with the mainStack 
+    //and piush the most recent min value in the stack
+    if(this.minStack.length === 0 || x <= last(this.minStack)){
+        this.minStack.push(x);
         }
-        this.stack.push(x)
+    //otehrwise push everything in the stack
+    this.stack.push(x)
     }
     pop(){
+        //pop the most recent min if it is equal to the one in the mainStack
         if(last(this.minStack) === last(this.stack)){
-            this.minStack.pop()
+            this.minStack.pop();
         }
         return this.stack.pop()
     }
-    
     top(){
         return last(this.stack)
     }
@@ -76,5 +81,3 @@ push(x){
     }
     
 }
-
-//comments comiung soon
