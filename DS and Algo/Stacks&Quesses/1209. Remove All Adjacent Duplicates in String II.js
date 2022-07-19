@@ -61,9 +61,6 @@ var removeDuplicates = function(s, k) {
         }
 
     }
-        
-    
-    
     stack.slice(0,1).join("");
     console.log(stack);
     return stack[stack.length - 1][0].repeat(stack[stack.length - 1][1]);
