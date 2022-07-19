@@ -67,4 +67,6 @@ var minInsertions = function(s) {
     
 };
 
-//asjbdasuidfc
+
+
+function
