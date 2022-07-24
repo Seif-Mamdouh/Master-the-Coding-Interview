@@ -23,4 +23,12 @@ Output: [1,1,1,0]
 Example 3:
 
 Input: temperatures = [30,60,90]
-Output: [1,1,0]
+Output: [1, 1, 0]
+
+
+var dailyTemperatures = function(temperatures) {
+    
+    if (temperatures === null || temperatures === 0) return [];
+    
+    
+};
