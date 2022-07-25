@@ -1,13 +1,6 @@
 1190. Reverse Substrings Between Each Pair of Parentheses
 Medium
 
-1387
-
-39
-
-Add to List
-
-Share
 You are given a string s that consists of lower case English letters and brackets.
 
 Reverse the strings in each pair of matching parentheses, starting from the innermost one.
