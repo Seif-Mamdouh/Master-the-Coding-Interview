@@ -55,31 +55,48 @@ Explanation:
 Since the record is empty, the total sum is 0.
 
 
-//answer 
+//my answer 
+
 
 var calPoints = function(ops) {
-    //stack to keep records in place
-   const stack = [];
+    //intailzing a stack
+    const stack = [];
+    //intlaizing the output
     let sum = 0;
-    for (let i = 0; i < ops.length; i++) {
-       if (ops[i] === '+') {
-            const a = stack[stack.length - 1];
-            const b = stack[stack.length - 2];
-            stack.push(a + b);
-            sum += (a + b);
-        } else if (ops[i] === 'D') {
-            const a = stack[stack.length - 1];
-            const r = a * 2;
-            stack.push(r);
-            sum += r;
-        } else if (ops[i] === 'C') {
-            const x = stack.pop();
-            sum -= x;
+    
+    //you can use switch case or bunch or else if
+    for(let i = 0; i < ops.length; i++){
+       if(ops[i] === '+'){
+           //getting the last value in the stack
+           const a = stack[stack.length - 1];
+           //getting second last value in the stack
+           const b = stack[stack.length - 2];
+           //add them
+           const add = a + b
+           //push it the in stack
+           stack.push(add)
+           //add the output in the sum var
+           sum += (add);
+        } else if(ops[i] === 'D'){
+            //getting the last value in the stack
+            const c = stack[stack.length - 1];
+            //multiply by 2
+            const m = c * 2;
+            //push it the in stack
+            stack.push(m);
+            //add the value to the sum var
+            sum += (m)
+        } else if(ops[i] === 'C'){
+            //get it out of the stack
+            const pop = stack.pop();
+            //reduce the value of the sum var
+            sum -= pop;
         } else {
             const x = parseInt(ops[i]);
             stack.push(x);
             sum += x;
         }
     }
+    
     return sum;
 };
