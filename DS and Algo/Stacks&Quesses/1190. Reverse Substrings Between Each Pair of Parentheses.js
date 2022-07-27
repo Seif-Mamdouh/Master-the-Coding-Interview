@@ -30,3 +30,35 @@ Constraints:
 1 <= s.length <= 2000
 s only contains lower case English characters and parentheses.
 It is guaranteed that all parentheses are balanced.
+
+
+//answer
+
+
+var reverseParentheses = function(s) {
+    const stack = []; 
+     
+     for(let i = 0; i < s.length; i++){
+         const index = s.charAt(i);
+         
+         if(index === ")"){
+             let rev = "";
+             
+             while(stack[stack.length - 1] !== "("){
+                 rev += stack.pop();
+             }
+             
+             stack.pop();
+             
+             for(let i = 0; i < rev.length; i++){
+                 stack.push(rev.charAt(i));
+             }
+         } else {
+             stack.push(index);
+         }
+     }
+     
+     return stack.join("")
+     
+ };
+ 
