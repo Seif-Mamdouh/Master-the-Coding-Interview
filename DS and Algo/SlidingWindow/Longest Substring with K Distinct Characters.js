@@ -26,7 +26,25 @@
 // Output: 5
 // Explanation: The longest substrings with no more than '3' distinct characters are "cbbeb" & "bbebi".
 
+//First, we will insert characters from the beginning of the string until we have K 
+//distinct characters in the HashMap.
+//These characters will constitute our sliding window. 
+//We are asked to find the longest such window having no more than K distinct characters.
+//We will remember the length of this window as the longest window so far.
 
+// After this, we will keep adding one character in the 
+//sliding window(i.e., slide the window ahead) in a stepwise fashion.
+
+//In each step, we will try to shrink the window from the beginning 
+//if the count of distinct characters in the HashMap is larger than K. 
+//We will shrink the window until we have no more than K distinct characters in the HashMap.
+//This is needed as we intend to find the longest window.
+
+//While shrinking, we’ll decrement the character’s frequency 
+//going out of the window and remove it from the HashMap if its frequency becomes zero.
+
+// At the end of each step, we’ll check if the current window length is the longest so far,
+// and if so, remember its length.
 
 
 //answer 
@@ -45,13 +63,17 @@ function longest_substring_with_k_distinct(str, k) {
     charFrequency[rightChar] += 1;
     // shrink the sliding window, until we are left with 'k' distinct characters in
     // the char_frequency
-    while (Object.keys(charFrequency).length > k) {
-      const leftChar = str[windowStart];
-      charFrequency[leftChar] -= 1;
+      while (Object.keys(charFrequency).length > k) {
+          const leftChar = str[windowStart];
+          charFrequency[leftChar] -= 1;
+
+          console.log(leftChar);
+
       if (charFrequency[leftChar] === 0) {
-        delete charFrequency[leftChar];
+          delete charFrequency[leftChar];
       }
-      windowStart += 1; // shrink the window
+        windowStart += 1; // shrink the window
+        
     }
     // remember the maximum length so far
     maxLength = Math.max(maxLength, windowEnd - windowStart + 1);
@@ -60,15 +82,50 @@ function longest_substring_with_k_distinct(str, k) {
   return maxLength;
 }
 
-console.log(
-  `Length of the longest substring: ` +
-    longest_substring_with_k_distinct("araaci", 2)
-);
+// console.log(
+//   `Length of the longest substring: ` +
+//     longest_substring_with_k_distinct("araaci", 2)
+// );
 console.log(
   `Length of the longest substring: ` +
     longest_substring_with_k_distinct("araaci", 1)
 );
-console.log(
-  `Length of the longest substring: ` +
-    longest_substring_with_k_distinct("cbbebi", 3)
-);
+// console.log(
+//   `Length of the longest substring: ` +
+//     longest_substring_with_k_distinct("cbbebi", 3)
+// );
+
+
+
+
+
+
+// function longest_substring_with_k_distinct(str, k) {
+//     let windowStart = 0;
+//     let maxLength = 0;
+//     let charFrequency = {};
+
+//     for (let windowEnd = 0; windowEnd < str.length; windowEnd++) {
+
+//         const rightChar = str[windowEnd];
+//         if (!(rightChar in charFrequency)) {
+//             charFrequency[rightChar] = 0
+//         }
+//         charFrequency[rightChar] += 1;
+
+//         while (Object.keys(charFrequency).length > k) {
+//             const leftChar = str[windowStart];
+//             charFrequency[leftChar] -= 1;
+
+//             if (charFrequency[leftChar] === 0) {
+//                 delete charFrequency[leftChar];
+//             }
+
+//             windowStart += 1;
+//         }
+
+//         maxLength = Math.max(maxLength, windowEnd - windowStart + 1);
+//     }
+
+//     return maxLength;
+// }
