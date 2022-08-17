@@ -1,30 +1,30 @@
-//LC Premuim 
+LC Premuim 
 
-//But I finesseed ;)
+But I finesseed ;)
 
-// Longest Substring with K Distinct Characters (medium)
+Longest Substring with K Distinct Characters (medium)
 
-// Problem Statement
+Problem Statement
 
-// Given a string, find the length of the longest substring in it with no more than K distinct characters.
+Given a string, find the length of the longest substring in it with no more than K distinct characters.
 
-// You can assume that K is less than or equal to the length of the given string.
+You can assume that K is less than or equal to the length of the given string.
 
-// Example 1:
+Example 1:
 
-// Input: String="araaci", K=2
-// Output: 4
-// Explanation: The longest substring with no more than '2' distinct characters is "araa".
-// Example 2:
+Input: String="araaci", K=2
+Output: 4
+Explanation: The longest substring with no more than '2' distinct characters is "araa".
+Example 2:
 
-// Input: String="araaci", K=1
-// Output: 2
-// Explanation: The longest substring with no more than '1' distinct characters is "aa".
-// Example 3:
+Input: String="araaci", K=1
+Output: 2
+Explanation: The longest substring with no more than '1' distinct characters is "aa".
+Example 3:
 
-// Input: String="cbbebi", K=3
-// Output: 5
-// Explanation: The longest substrings with no more than '3' distinct characters are "cbbeb" & "bbebi".
+Input: String="cbbebi", K=3
+Output: 5
+Explanation: The longest substrings with no more than '3' distinct characters are "cbbeb" & "bbebi".
 
 //First, we will insert characters from the beginning of the string until we have K 
 //distinct characters in the HashMap.
@@ -95,37 +95,3 @@ console.log(
 //     longest_substring_with_k_distinct("cbbebi", 3)
 // );
 
-
-
-
-
-
-// function longest_substring_with_k_distinct(str, k) {
-//     let windowStart = 0;
-//     let maxLength = 0;
-//     let charFrequency = {};
-
-//     for (let windowEnd = 0; windowEnd < str.length; windowEnd++) {
-
-//         const rightChar = str[windowEnd];
-//         if (!(rightChar in charFrequency)) {
-//             charFrequency[rightChar] = 0
-//         }
-//         charFrequency[rightChar] += 1;
-
-//         while (Object.keys(charFrequency).length > k) {
-//             const leftChar = str[windowStart];
-//             charFrequency[leftChar] -= 1;
-
-//             if (charFrequency[leftChar] === 0) {
-//                 delete charFrequency[leftChar];
-//             }
-
-//             windowStart += 1;
-//         }
-
-//         maxLength = Math.max(maxLength, windowEnd - windowStart + 1);
-//     }
-
-//     return maxLength;
-// }
