@@ -55,7 +55,7 @@ function fruits_into_baskets(fruits) {
     // frequency dictionary
     while (Object.keys(fruitFrequency).length > 2) {
       const leftFruit = fruits[windowStart];
-      fruitFrequency[leftFruit] -= 1;
+      //fruitFrequency[leftFruit] -= 1;
       if (fruitFrequency[leftFruit] === 0) {
         delete fruitFrequency[leftFruit];
       }
