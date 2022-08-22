@@ -1,0 +1,142 @@
+Introduction
+This article is targeted at beginners. So I’m not trying to scare you my reader but I won’t fail to point out the prerequisites so you don’t say you weren’t informed. In every algorithm textbook or tutorial, graph algorithms alongside trees are often the last part. They are presented as the advanced part and I will agree with that classification. Because before you learn graph algorithms you’ll need to know lists/matrix, stack/queue, while/for loops/recursion.
+
+This is the first time I am implementing Breadth First Search (BFS) and Depth First Search (DFS) without looking at any existing code. I referenced two sources which outlined the concepts and pseudocodes. They are:
+
+BFS and DFS on Wikipedia. Here you will find the pseudocode towards the middle of the page.
+Explanations you will find on Educative.io website.
+For any beginner programmer, graph algorithms is one of the grey areas that is often daunting. But once they can understand and internalize this aspect of computer algorithms, they will notice that their understanding of the concepts and principles of computer algorithms become quite elevated. It means one is able to understand and solve basic computing problems.
+
+Definition of Concept
+Fundamentally graph is a data structure which is characterised by nonlinearity for representing connections of vertices (or nodes) and edges. I prefer to call them vertices to distinguish them from tree nodes. By definition:
+
+A graph is a data structure which consists of a finite set of nodes (or vertices) with a set of edges connecting a pair of nodes (or vertices).
+
+In fact, graph algorithm originated from Euler’s paper ( you can find the link on graph theory page on Wikipedia) where he wrote about “Seven Bridges of Königsberg” in which he tried to solve a problem of ease of access within the city.
+
+Basic Graph Algorithm
+Below is a simple graph representing points and connections between them, vertices = {1, 2, 3, 4, 5, 6}, edges ={{1,2}, {1,5}, {2,3}, {2,5}, {3,4}, {4,5}, {4,6}}.
+
+BFS and DFS are the most basic of graph algorithms which opens the gateway to learning numerous other algorithms based on graphs. The thing is that we should be able to find our way through this maze above. BFS and DFS are the inverse of the other. I hope by the end of this article. You would know why. Language of implementation is JavaScript.
+
+Representation of a Graph
+This is the first consideration in graph algorithm. We have to map out our data structure. However, graph is not a basic data structure, but it can be implemented off other data structures. We have to choose between adjacency matrix or adjacency list. There are other ways it can be achieved. Almost every programming problems can be solved in a dozens of ways. Adjacency matrix is an N x N array ( what we know as 2D) where the horizontal axis represents the vertices and vertical axis represents the edges.
+
+
+Adjacency list is a list of lists. Where each list is a vertex and its corresponding edges therein. The advantage of a list over matrix is that list consumes less space. Matrix takes O(v²) space requirement. Queries are pros for matrix because finding one vertex to another takes O(1). This implementation will use adjacency matrix.
+
+Now we know this we declare a function to initialise our graph solution. We declare a global graphAdj matrix which is just an array. And we loop over the array to create new Arrays for each index of our base array. Again we use a double for loop to traverse the resultant array and initialise each slot of the adjacency matrix to 0 which indicates no vertex.
+
+let graphAdj;
+const initGraph = (maxVertex) => {
+     graphAdj = new Array(maxVertex);
+for (let i = 0; i < graphAdj.length; i++) {
+       graphAdj[i] = new Array(maxVert);
+    }
+   for (let i = 0; i < graphAdj.length; i++) {
+        for (let j = 0; j < graphAdj[i].length; j++) {
+           graphAdj[i][j] = 0;
+        }
+   }
+}
+
+For visualisation. We implement a printGraph function which uses a for loop to print out the graph. This is trivial.
+
+const printGraph = () => {
+     let graphline = " ";
+     let i, j;
+     for (i = 0; i < graphAdj.length; i++) {
+        for (j = 0; j < graphAdj[i].length; j++) {
+            graphline += graphAdj[i][j];
+            graphline += " "
+            if (j == graphAdj.length - 1) {
+               console.log(graphline);
+               graphline = ' ';
+            }
+        }
+      }
+}
+
+Insertion of Vertices
+Now we have to insert the vertex in the graph, If this was a weighted graph, we would replace the 0s with the weights of the edges. But in this unweighted graph, it would be 1 to represent the vertex.
+
+const insertGraph = (a, b) => {
+   for (let i = 0; i < graphAdj.length; i++) {
+       for (let j = 0; j < graphAdj[i].length; j++) {
+          if (i == a && j == b) {
+             graphAdj[i][j] = 1;
+             graphAdj[j][i] = 1;
+          }
+        }
+    }
+}
+However, what we do here is to replace the edges from one vertex to the other with value 1 indicating there is a connection. Refer to adjacency matrix above. So when we have {1,2}, we go to the row representing 1, and insert 1 at position 2. We also go to the column at position 2 and place 1 again. Now it tells us that on vertex 1, there’s a connection to vertex 2. For {1,5} we go to the row 1 and insert 1 at slot representing 5 and go to row one on the horizontal and do so too.
+
+Tracking Visits To Vertices
+So we need to track visits to each vertex. What we do is to declare an array that indexes the vertices and initialise all cells to false. So we will adjust our initGraph and add the visited array. Find below an updated version. It includes the stack (DFS) or queue (BFS) we would utilize.
+
+let graphAdj;
+let visited;
+let stack;
+const initGraph = (maxVertice) => {
+       visited = new Array(maxVertice);
+       stack = new Stack(); 
+       queue = new Queue();
+for (let i = 0; i < visited.length; i++) {
+         visited[i] = false;
+      }
+graphAdj = new Array(maxVertice);
+for (let i = 0; i < graphAdj.length; i++) {
+       graphAdj[i] = new Array(maxVert);
+    }
+   for (let i = 0; i < graphAdj.length; i++) {
+        for (let j = 0; j < graphAdj[i].length; j++) {
+           graphAdj[i][j] = 0;
+        }
+    }
+}
+
+DFS
+Stack is a data structure that follows the Last-In First-Out(LIFO) approach. It is used in DFS because we are going to be backtracking while searching. The idea is to get to the deepest vertex from the starting point and then weave our way back up towards the starting point. With the visited array, since we are interested in getting to the depth, we do not mark a vertex we visit as we go down as visited. When we get to the end, you now find that the next one to visit is the node directly on top of the visited node. So we backtrack to the starting node while marking all we find in the backward movement which are popped off the top of the stack as visited. Focus on the loop, and see how looping over the subarray at cell 1 locates all the cells marked 1s which falls at 2 and 5 and checks if they have been visited when they are popped off the stack in LIFO.
+
+Push a node into stack.
+If our stack isn’t empty, pop the top of the stack, mark visited as true
+Then get all vertices linking to it.
+const dfs = (node) => { 
+     stack.push(node);
+     while (!stack.isEmpty()) {
+        node = stack.pop();
+        if (visited[node] == false) {
+           visited[node] = true;
+           console.log(`we visited ${node}`)
+           for (let j = 0; j < graphAdj[node].length; j++) {
+              if (graphAdj[node][j] === 1){
+                  stack.push(j);
+               }
+            }
+       }
+     }
+}
+BFS
+Queue is a data structure that follows the First-In First-Out(FIFO) approach. We use queue here because we want to visit the graph at every level as we go down to the farthest node. So basically, using our visited array, we mark each vertex we visit as true and then proceed to get all its edges and mark as visited and we equeue all visited. We repeat that until we have an empty stack. BFS seems simpler than DFS.
+
+Enqueue a node, mark as visited.
+Dequeue (visit) all edges of the node and mark as visited and enqueue.
+Repeat the process while queue is not empty.
+const bfs = (node) => { 
+   visited[node] = true;
+   queue.equeue(node); 
+    while (!queue.isEmpty()) {
+        let visiting = queue.dequeue();
+        console.log(`we visited ${visiting}`)
+        for (let j = 0; j < graphAdj[visiting].length; j++) {
+           if ((graphAdj[visiting][j] === 1) && (visited[j] === false)) {  
+           visited[j] = true;
+           queue.equeue(j);
+          }
+       }
+     }
+}
+Conclusion
+I want to believe that at this point we have deconstructed the two most basic graph algorithms. While BFS uses queue data structure to traverse an graph breadth wise, level by level, DFS uses stack data structure and traverses a graph depth wise, the farthest depth. We can see that’s even how the names of the algorithms came about. Read up the Wikipedia page on graph theory, BFS and DFS. You will find that graphs have wide applicability in computer algorithms. There is an extensive list of different algorithms you will find on geeksforgeeks website. You can find my complete implementations of DFS and BFS on my github gist. Most well paying Software development/engineering jobs require solving at least one problem that requires knowledge of basic graph algorithms in the first assessment after which they must have assessed culture fit. Generally, it is important to know these algorithms, helps to elevate programming thinking. Believe me.
+
