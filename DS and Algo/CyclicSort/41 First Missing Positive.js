@@ -80,4 +80,7 @@ console.log(find_first_smallest_missing_positive([-3, 1, 5, 4, 2]));
 // console.log(find_first_smallest_missing_positive([3, -2, 0, 1, 2]));
 // console.log(find_first_smallest_missing_positive([3, 2, 5, 1]));
 
-runtime beats 99.95 % of javascript submissions.
+Runtime: 74 ms, faster than 100.00 % of JavaScript online submissions for First Missing Positive.
+  
+Memory Usage: 47.1 MB, less than 100.00% of JavaScript online submissions for First Missing Positive.
+
