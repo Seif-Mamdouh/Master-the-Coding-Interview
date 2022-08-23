@@ -71,8 +71,10 @@ function count_islands_DFS(matrix) {
 }
 
 function visit_island_DFS(matrix, x, y) {
-  if (x < 0 || x >= matrix.length || y < 0 || y >= matrix[0].length) return; // return, if it is not a valid cell
-  if (matrix[x][y] === 0) return; // return, if it is a water cell
+  // return, if it is not a valid cell
+  if (x < 0 || x >= matrix.length || y < 0 || y >= matrix[0].length) return;
+  // return, if it is a water cell
+  if (matrix[x][y] === 0) return;
 
   matrix[x][y] = 0; // mark the cell visited by making it a water cell
 
