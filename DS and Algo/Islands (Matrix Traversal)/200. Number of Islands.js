@@ -53,53 +53,77 @@ answer = 3
 
 */
 
-function count_islands_DFS(matrix) {
-  const rows = matrix.length;
-  const cols = matrix[0].length;
-  let totalIslands = 0;
-  for (let i = 0; i < rows; i++) {
-    for (let j = 0; j < cols; j++) {
+// function count_islands_DFS(matrix) {
+//   const rows = matrix.length;
+//   const cols = matrix[0].length;
+//   let totalIslands = 0;
+//   for (let i = 0; i < rows; i++) {
+//     for (let j = 0; j < cols; j++) {
+//       if (matrix[i][j] === 1) {
+//         // only if the cell is a land
+//         // we have found an island
+//         totalIslands++;
+//         visit_island_DFS(matrix, i, j);
+//       }
+//     }
+//   }
+//   return totalIslands;
+// }
+
+// function visit_island_DFS(matrix, x, y) {
+//   // return, if it is not a valid cell
+//   if (x < 0 || x >= matrix.length || y < 0 || y >= matrix[0].length) return;
+//   console.log(x);
+//   // return, if it is a water cell
+//   if (matrix[x][y] === 0) return;
+
+//   matrix[x][y] = 0; // mark the cell visited by making it a water cell
+
+//   // recursively visit all neighboring cells (horizontally & vertically)
+//   visit_island_DFS(matrix, x + 1, y); // lower cell
+//   visit_island_DFS(matrix, x - 1, y); // upper cell
+//   visit_island_DFS(matrix, x, y + 1); // right cell
+//   visit_island_DFS(matrix, x, y - 1); // left cell
+// }
+
+
+
+
+function count_island_DFS(matrix) {
+  let rows = matrix.length;
+  let cols = matrix[0].length;
+  let noIslands = 0;
+
+  for (let i = 0; i < rows; i++){
+    for (let j = 0; j < cols; j++){
       if (matrix[i][j] === 1) {
-        // only if the cell is a land
-        // we have found an island
-        totalIslands++;
+        //if when find a land 
+        noIslands++;
         visit_island_DFS(matrix, i, j);
       }
     }
   }
-  return totalIslands;
+  return noIslands;
 }
 
 function visit_island_DFS(matrix, x, y) {
-  // return, if it is not a valid cell
+  //taking some precautions to pass all test cases
   if (x < 0 || x >= matrix.length || y < 0 || y >= matrix[0].length) return;
-  // return, if it is a water cell
   if (matrix[x][y] === 0) return;
 
-  matrix[x][y] = 0; // mark the cell visited by making it a water cell
+  //Look in all directions set the current cell to 0 to prevent this cell from being visited again
+  matrix[x][y] = 0; //mark the water cell;
 
-  // recursively visit all neighboring cells (horizontally & vertically)
+  //now we can work on our recursion function to look in all directions
   visit_island_DFS(matrix, x + 1, y); // lower cell
   visit_island_DFS(matrix, x - 1, y); // upper cell
   visit_island_DFS(matrix, x, y + 1); // right cell
-  visit_island_DFS(matrix, x, y - 1); // left cell
+  visit_island_DFS(matrix, x, y - 1); //left cell
 }
 
 
-
 console.log(
-  count_islands_BFS([
-    [
-      ["1", "1", "1", "1", "0"],
-      ["1", "1", "0", "1", "0"],
-      ["1", "1", "0", "0", "0"],
-      ["0", "0", "0", "0", "0"],
-    ],
-  ])
-);
-
-console.log(
-  count_islands_DFS([
+  count_island_DFS([
     [
       ["1", "1", "1", "1", "0"],
       ["1", "1", "0", "1", "0"],
@@ -122,7 +146,7 @@ console.log(
 
 
 
-var numIslands = function (grid) {
+function numIslands (grid) {
   let count = 0;
   for (let i = 0; i < grid.length; i++) {
     for (let j = 0; j < grid[0].length; j++) {
@@ -158,60 +182,72 @@ const dfsSink = (grid, i, j) => {
 };
 
 
-//BFS 
-function count_islands_BFS(matrix) {
-  const rows = matrix.length;
-  const cols = matrix[0].length;
-  let totalIslands = 0;
-  for (let i = 0; i < rows; i++) {
-    for (let j = 0; j < cols; j++) {
-      if (matrix[i][j] === 1) {
-        // only if the cell is a land
-        // we have found an island
-        totalIslands++;
-        visit_island_BFS(matrix, i, j);
-      }
-    }
-  }
-  return totalIslands;
-}
-
-function visit_island_BFS(matrix, x, y) {
-  const neighbors = [[x, y]];
-  while (neighbors.length > 0) {
-    const cell = neighbors.shift();
-    const row = cell[0];
-    const col = cell[1];
-
-    if (row < 0 || row >= matrix.length || col < 0 || col >= matrix[0].length)
-      continue; // continue, if it is not a valid cell
-    if (matrix[row][col] == 0) continue; // continue if it is a water cell
-
-    matrix[row][col] = 0; // mark the cell visited by making it a water cell
-
-    // insert all neighboring cells to the queue for BFS
-    neighbors.push([row + 1, col]); // lower cell
-    neighbors.push([row - 1, col]); // upper cell
-    neighbors.push([row, col + 1]); // right cell
-    neighbors.push([row, col - 1]); // left cell
-  }
-}
-
 console.log(
-  count_islands_BFS([
-    [0, 1, 1, 1, 0],
-    [0, 0, 0, 1, 1],
-    [0, 1, 1, 1, 0],
-    [0, 1, 1, 0, 0],
-    [0, 0, 0, 0, 0],
+  numIslands([
+    [
+      ["1", "1", "1", "1", "0"],
+      ["1", "1", "0", "1", "0"],
+      ["1", "1", "0", "0", "0"],
+      ["0", "0", "0", "0", "0"],
+    ],
   ])
 );
-console.log(
-  count_islands_BFS([
-    [1, 1, 1, 0, 0],
-    [0, 1, 0, 0, 1],
-    [0, 0, 1, 1, 0],
-    [0, 0, 1, 0, 0],
-    [0, 0, 1, 0, 0],
-  ])
-);
+
+
+// //BFS 
+// function count_islands_BFS(matrix) {
+//   const rows = matrix.length;
+//   const cols = matrix[0].length;
+//   let totalIslands = 0;
+//   for (let i = 0; i < rows; i++) {
+//     for (let j = 0; j < cols; j++) {
+//       if (matrix[i][j] === 1) {
+//         // only if the cell is a land
+//         // we have found an island
+//         totalIslands++;
+//         visit_island_BFS(matrix, i, j);
+//       }
+//     }
+//   }
+//   return totalIslands;
+// }
+
+// function visit_island_BFS(matrix, x, y) {
+//   const neighbors = [[x, y]];
+//   while (neighbors.length > 0) {
+//     const cell = neighbors.shift();
+//     const row = cell[0];
+//     const col = cell[1];
+
+//     if (row < 0 || row >= matrix.length || col < 0 || col >= matrix[0].length)
+//       continue; // continue, if it is not a valid cell
+//     if (matrix[row][col] == 0) continue; // continue if it is a water cell
+
+//     matrix[row][col] = 0; // mark the cell visited by making it a water cell
+
+//     // insert all neighboring cells to the queue for BFS
+//     neighbors.push([row + 1, col]); // lower cell
+//     neighbors.push([row - 1, col]); // upper cell
+//     neighbors.push([row, col + 1]); // right cell
+//     neighbors.push([row, col - 1]); // left cell
+//   }
+// }
+
+// console.log(
+//   count_islands_BFS([
+//     [0, 1, 1, 1, 0],
+//     [0, 0, 0, 1, 1],
+//     [0, 1, 1, 1, 0],
+//     [0, 1, 1, 0, 0],
+//     [0, 0, 0, 0, 0],
+//   ])
+// );
+// console.log(
+//   count_islands_BFS([
+//     [1, 1, 1, 0, 0],
+//     [0, 1, 0, 0, 1],
+//     [0, 0, 1, 1, 0],
+//     [0, 0, 1, 0, 0],
+//     [0, 0, 1, 0, 0],
+//   ])
+// );
