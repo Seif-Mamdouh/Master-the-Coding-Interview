@@ -27,7 +27,7 @@ function pair_with_target_sum(arr, targetSum) {
     }
     nums[arr[i]] = i;
   }
-  return [-1, -1];
+    return nums;
 }
 
 console.log(pair_with_target_sum([1, 2, 3, 4, 6], 6));
