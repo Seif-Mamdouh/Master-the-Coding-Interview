@@ -22,27 +22,35 @@ Output: [4,9,9,49,121]
 */
 
 function make_squares(arr) {
-  const n = arr.length;
-  squares = Array(n).fill(0);
-  let highestSquareIdx = n - 1;
-  let left = 0,
-    right = n - 1;
-  while (left <= right) {
-    let leftSquare = arr[left] * arr[left],
-      rightSquare = arr[right] * arr[right];
-    if (leftSquare > rightSquare) {
-      squares[highestSquareIdx] = leftSquare;
-      left += 1;
-    } else {
-      squares[highestSquareIdx] = rightSquare;
-      right -= 1;
-    }
-    highestSquareIdx -= 1;
-  }
+    let n = arr.length;
+    //new array to push results;
+    let result = new Array(n).fill(0);
+    let highSqaure = n - 1;
+    //intilizing the two pointers
+    let right = n - 1, left = 0;
 
-  return squares;
+    while (left <= right) {
+        leftSqaure = arr[left] * arr[left];
+        rightSqaure = arr[right] * arr[right];
+        if (leftSqaure > rightSqaure) {
+            result[highSqaure] = leftSqaure;
+            left++;
+        } else {
+            result[highSqaure] = rightSqaure;
+            right -= 1;
+        }
+
+        highSqaure -= 1;
+    }
+
+    return result;
 }
 
 
 console.log(`Squares: ${make_squares([-2, -1, 0, 2, 3])}`);
 console.log(`Squares: ${make_squares([-3, -1, 0, 1, 2])}`);
+
+/*
+Runtime: 106 ms, faster than 95.23% of JavaScript online submissions for Squares of a Sorted Array.
+Memory Usage: 47.8 MB, less than 98.70% of JavaScript online submissions for Squares of a Sorted Array.
+*/
