@@ -23,7 +23,7 @@ function pair_with_target_sum(arr, targetSum) {
   for (let i = 0; i < arr.length; i++) {
     const num = arr[i];
     // console.log(num);
-    if (targetSum + num in nums) {
+    if (targetSum - num in nums) {
       console.log(num);
       return [nums[targetSum - num], i];
     }
