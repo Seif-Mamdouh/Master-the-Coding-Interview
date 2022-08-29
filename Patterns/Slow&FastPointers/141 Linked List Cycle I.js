@@ -45,25 +45,13 @@ function find_cycle_length(head) {
   while (fast !== null && fast.next !== null) {
     fast = fast.next.next;
     slow = slow.next;
-    if (slow === fast) {
-      // found the cycle
-      return calculate_cycle_length(slow);
-    }
-  }
-  return 0;
-}
 
-function calculate_cycle_length(slow) {
-  let current = slow,
-    cycle_length = 0;
-  while (true) {
-    current = current.next;
-    cycle_length += 1;
-    if (current === slow) {
-      break;
+    if (slow === fast) {
+      return true;
     }
   }
-  return cycle_length;
+
+  return false;
 }
 
 const head = new Node(1);
