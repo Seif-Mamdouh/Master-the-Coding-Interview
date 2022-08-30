@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Seif-Mamdouh/Master-the-Coding-Interview/issues"
   },
-  "homepage": "https://github.com/Seif-Mamdouh/Master-the-Coding-Interview#readme"
+  "homepage": "https://github.com/Seif-Mamdouh/Master-the-Coding-Interview#readme",
+  "dependencies": {
+    "collections": "^5.1.13"
+  }
 }
