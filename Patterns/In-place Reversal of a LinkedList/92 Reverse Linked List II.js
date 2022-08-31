@@ -51,7 +51,7 @@ function reverse_sub_list(head, p, q) {
     return head;
   }
 
-  //skipping to the pth node for the starting point
+  //skipping to the pth node for the starting point of the sublist
   let current = head,
     prev = null;
   let i = 0;
@@ -61,10 +61,12 @@ function reverse_sub_list(head, p, q) {
     i += 1;
   }
 
-  // we are interested in three parts of the LinkedList, the part before index 'p',
+  // we are interested in three parts of the LinkedList, 
+  //the part before index 'p',
   // the part between 'p' and 'q', and the part after index 'q'
   const last_node_of_first_part = prev;
-  // after reversing the LinkedList 'current' will become the last node of the sub-list
+  // after reversing the LinkedList 'current' will become the 
+  //last node of the sub - list
   const last_node_of_sub_list = current;
   let next = null; // will be used to temporarily store the next node
 
