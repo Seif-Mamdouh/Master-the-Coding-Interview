@@ -59,3 +59,5 @@ head.print_list();
 result = reverse(head);
 process.stdout.write("Nodes of reversed LinkedList are: ");
 result.print_list();
+
+
