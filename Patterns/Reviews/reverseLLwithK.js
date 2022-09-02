@@ -40,7 +40,35 @@ function reverse_every_k_elements(head, k) {
         prev = null;
     let i = 0;
 
-    while
+    while (true){
+        let last_node_of_previous_part = prev;
+
+        let last_node_of_sub_list = current;
+        let next = null;
+
+        while (current !== null && i < k) {
+                next = current.next;
+                current.next = prev;
+                prev = current;
+                current = next;
+                i += 1;
+        }
+
+        if (last_node_of_previous_part !== null) {
+            last_node_of_previous_part.next = prev;
+        } else {
+            head = prev;
+        }
+
+        last_node_of_first_part.next = current;
+
+    if (current === null) {
+      break;
+    }
+    previous = last_node_of_sub_list;
+    }
+
+    return head;
 }
 
 const head = new Node(1);
