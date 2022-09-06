@@ -51,15 +51,11 @@ Here are the steps for our Binary Tree Path Sum problem:
 
 3 - At every step, see if the current node being visited is a leaf node and if its value is equal 
     to the given number ‘S’. If both these conditions are true, we have found the required root-to-leaf path, therefore return true.
+
 4 - If the current node is a leaf but its value is not equal to the given number ‘S’, return false.
 
 
-
-
-
-
 */
-
 
 
 
@@ -71,6 +67,30 @@ class TreeNode {
   }
 }
 
-function hasPath(root, sum ) {
-  
+function hasPath(root, sum) {
+  if (root === null) {
+    return false;
+  }
+
+  //if the current node is a leaf node and the val and its value is equal to the sum, we've found a path
+  if (root.val === sum && root.left === null && root.right == null) {
+    return true;
+  }
+
+  //recursively go call the function to traverse the left and right sub tree
+  //return true if and only if any of the two recursive call return true
+  return (
+    hasPath(root.left, sum - root.val) || hasPath(root.right, sum - root.val)
+  );
 }
+
+
+
+const root = new TreeNode(12);
+root.left = new TreeNode(7);
+root.right = new TreeNode(1);
+root.left.left = new TreeNode(9);
+root.right.left = new TreeNode(10);
+root.right.right = new TreeNode(5);
+console.log(`Tree has path: ${hasPath(root, 23)}`);
+console.log(`Tree has path: ${hasPath(root, 16)}`);
