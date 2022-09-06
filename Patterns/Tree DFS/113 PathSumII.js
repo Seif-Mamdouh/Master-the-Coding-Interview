@@ -46,8 +46,20 @@ class TreeNode {
     }
 }
 
-function find_paths(root, sum) {
-    
-}
+var pathSum = function (root, targetSum) {};
 
-function()
+var recurring = function path(curr, currentSum, currentPath, allPaths) {
+  if (curr == null) {
+    return null;
+  }
+
+  //add the current node to the Path
+  currentPath.push(curr);
+
+  if (curr == null && curr.left == null && curr.right == null) {
+    allPaths.push(currentPath.toArray());
+  } else {
+      recurring(curr.left, sum - curr, curr.left === null && curr.right === null)
+      
+  }
+};
