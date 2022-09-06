@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/Seif-Mamdouh/Master-the-Coding-Interview#readme",
   "dependencies": {
-    "collections": "^5.1.13"
+    "babel-runtime": "^6.26.0",
+    "collections": "^5.1.13",
+    "deep-object-diff": "^1.1.7"
   }
 }
