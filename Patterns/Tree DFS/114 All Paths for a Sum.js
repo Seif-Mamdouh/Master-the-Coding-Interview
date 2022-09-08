@@ -23,35 +23,34 @@ follow the same approach to calculate the path number of each node.
 
 
 class TreeNode {
-    constructor(val, left = null, right = null) {
-        this.val = val;
-        this.left = left;
-        this.right = right; 
-    }
+  constructor(val, left = null, right = null) {
+    this.val = val;
+    this.left = left;
+    this.right = right;
+  }
 }
 
 function find_sum_of_path_numbers(root) {
-    return find_root_to_leaf_numbers(root, 0);
+  return find_root_to_leaf_numbers(root, 0);
 }
 
-
 function find_root_to_leaf_numbers(currentNode, pathSum) {
-    if (currentNode === null) {
-        return 0;
-    }
+  if (currentNode === null) {
+    return 0;
+  }
 
-    //calculate the path number of the current node 
-    pathSum = 10 * pathSum + currentNode.val;
+  //calculate the path number of the current node
+  pathSum = 10 * pathSum + currentNode.val;
 
-    if (currentNode.left === null && currentNode.right === null) {
-        return pathSum;
-    }
+  if (currentNode.left === null && currentNode.right === null) {
+    return pathSum;
+  }
 
-    //traverse the left and the right and the right sub-tree 
-    return (
-        find_root_to_leaf_numbers(currentNode.left, pathSum) +
-        find_root_to_leaf_numbers(currentNode.right, pathSum) 
-    )
+  //traverse the left and the right and the right sub-tree
+  return (
+    find_root_to_leaf_numbers(currentNode.left, pathSum) +
+    find_root_to_leaf_numbers(currentNode.right, pathSum)
+  );
 }
 
 
@@ -62,6 +61,4 @@ root.left.left = new TreeNode(1);
 root.right.left = new TreeNode(6);
 root.right.right = new TreeNode(5);
 console.log(`Total Sum of Path Numbers: ${find_sum_of_path_numbers(root)}`);
-
-
 
