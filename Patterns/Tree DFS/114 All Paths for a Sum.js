@@ -31,26 +31,28 @@ class TreeNode {
 }
 
 function find_sum_of_path_numbers(root) {
-  return find_root_to_leaf_numbers(root, 0);
+  return find_root_to_leaf_path_numbers(root, 0);
 }
 
-function find_root_to_leaf_numbers(currentNode, pathSum) {
+function find_root_to_leaf_path_numbers(currentNode, pathSum) {
+  
   if (currentNode === null) {
     return 0;
   }
 
-  //calculate the path number of the current node
+  //formula
   pathSum = 10 * pathSum + currentNode.val;
 
   if (currentNode.left === null && currentNode.right === null) {
-    return pathSum;
+    return pathSum
   }
 
-  //traverse the left and the right and the right sub-tree
+  //traverse through the tree and get the sum of the all paths in the tree 
   return (
-    find_root_to_leaf_numbers(currentNode.left, pathSum) +
-    find_root_to_leaf_numbers(currentNode.right, pathSum)
-  );
+    find_root_to_leaf_path_numbers(currentNode.left, pathSum) +
+    find_root_to_leaf_path_numbers(currentNode.right, pathSum)
+  ); 
+
 }
 
 
