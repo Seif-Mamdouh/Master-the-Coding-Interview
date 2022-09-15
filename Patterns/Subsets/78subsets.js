@@ -29,7 +29,6 @@ function find_subsets(nums) {
     const subsets = [];
 
     subsets.push([]);
-    
     for (let i = 0; i < nums.length; i++){
         currentNumber = nums[i];
         const n = subsets.length;
