@@ -81,5 +81,8 @@ console.log(
   `String permutations are: ${find_letter_case_string_permutations("ab7c")}`
 );
 
-// const age = "50 is the age";
-// console.log(parseInt(age));
+const age = "50 is the age";
+console.log(parseInt(age));
+
+
+
