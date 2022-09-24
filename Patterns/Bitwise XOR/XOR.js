@@ -1,20 +1,6 @@
-// function find_missing_number(arr) {
-//     const n = arr.length + 1;
-
-//     let x1 = 1;
-//     for (let i = 2; i <= n; i++){
-//         x1 = x1 ^ i;
-//         console.log(i);
-//     }
-
-//     let x2 = arr[0];
-//     for (let i = 1; i < n; i++){
-//         x2 = x2 ^ arr[i];
-//     }
-
-//     return x1 ^ x2;
-// }
-
+//Find the missing number of the array 
+// [1, 2, 3, 4]
+// 
 
 
 function find_missing_number(arr) {
