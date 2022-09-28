@@ -1,12 +1,22 @@
 function smallest_subarray_sum(s, arr) {
-    let windowSum = 0;
-    let windowStart = 0; 
-    let minLength = Infinity;
+    let windowSum = 0,
+      minLength = Infinity,
+      windowStart = 0;
 
-
-    for (let windowEnd = 0; windowEnd < arr.length; windowEnd++){
-        
+    for (let windowEnd = 0; windowEnd < arr.length; windowEnd++) {
+      windowSum += arr[windowEnd]; // add the next element
+      // shrink the window as small as possible until the 'window_sum' is smaller than 's'
+      while (windowSum >= s) {
+        minLength = Math.min(minLength, windowEnd - windowStart + 1);
+        windowSum -= arr[windowStart];
+        windowStart += 1;
+      }
     }
+
+    if (minLength === Infinity) {
+      return 0;
+    }
+    return minLength;
 }
 
 console.log(
