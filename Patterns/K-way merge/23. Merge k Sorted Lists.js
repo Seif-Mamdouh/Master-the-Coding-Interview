@@ -25,3 +25,28 @@
 
 // Input: lists = []
 // Output: []
+
+
+
+var mergeKLists = function (lists) {
+  const minHeap = new MinPriorityQueue();
+
+  //add every node to minHeap
+  for (let list of lists) {
+    while (list) {
+      minHeap.enqueue(list.val);
+      list = list.next;
+    }
+  }
+
+  const dummy = new ListNode(-1);
+  let head = dummy;
+
+  while (!minHeap.isEmpty()) {
+    //console.log(minHeap.dequeue())
+    head.next = new ListNode(minHeap.dequeue().element);
+    head = head.next;
+  }
+
+  return dummy.next;
+};
