@@ -49,3 +49,35 @@
 <!-- create React Element that has a object that calls the div component and set it to a className and Children -->
 
 <!-- LAstly render the React components -->
+
+
+
+//Extra Credit: 
+
+<div id="root">
+    <div class="container">
+      <span>Hello</span>
+      <span>World</span>
+    </div>
+  </div>
+
+
+  1. 💯 nesting elements
+See if you can figure out how to write the JavaScript + React code to generate this DOM output:
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
+  <script type="module">
+    const rootElement = document.getElementById('root')
+
+    const helloElement = React.createElement('span', {} ,'Hello')
+    const worldElement = React.createElement('span', {} ,'World') 
+
+    const element = React.createElement('div', {
+      className: 'container',
+      children: [helloElement, ' ', worldElement],
+    })
+    ReactDOM.createRoot(rootElement).render(element)
+  </script>
+</body>
