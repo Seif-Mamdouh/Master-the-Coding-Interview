@@ -30,10 +30,22 @@
 
 <body>
     <div id = "root"></div>
+      <script src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
+      <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
     <script>
-        <script src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
-        <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
-
-        
+        const rootElement = document.getElementById("root");
+        const element = React.createElement('div', {
+            className: 'container',
+            children: "Hello World",
+        })
+        ReactDOM.createRoot(rootElement).render(element);
     </script>
 </body>
+
+
+
+<!-- create element named root element and set it to ('root') -->
+
+<!-- create React Element that has a object that calls the div component and set it to a className and Children -->
+
+<!-- LAstly render the React components -->
