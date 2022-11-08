@@ -96,6 +96,18 @@ export default App
 
 02 extra Credit
 
+// my solution the 
+function Box({ style,className = '', ...otherProps }) {
+  return (
+    <div className={`box box--${className}`}
+      style={{ fontStyle: 'italic', ...style }}
+      {...otherProps}
+      />
+  )
+}
+
+
+
 function Box({ style, size,className = '', ...otherProps }) {
   const sizeClassName = size ? `box--${size}` : ' '
   return (
