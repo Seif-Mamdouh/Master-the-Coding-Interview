@@ -77,3 +77,19 @@ var removeDuplicates = function (nums) {
 // Key Lesson, inplace Algo
 
 // O(n) time O(1) space
+
+
+
+var removeDuplicates = function (nums) {
+  let num = nums.length;
+
+  let j = 1;
+
+  for (let i = 1; i < num; i++) {
+    if (nums[i] != nums[i - 1]) {
+      nums[j] = nums[i];
+      j++;
+    }
+  }
+  return j;
+};
