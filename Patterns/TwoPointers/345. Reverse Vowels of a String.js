@@ -1,19 +1,19 @@
 var reverseVowels = function (s) {
   vowels = "aeiouAEIOU";
-  let first = 0;
-  let last = s.length - 1;
+  let i = 0;
+  let j = s.length - 1;
   let array = s.split("");
 
-  while (first < last) {
-    while (first < last && this.vowels.indexOf(array[first]) === -1) {
-      first++;
+  while (i < j) {
+    while (i < j && this.vowels.indexOf(array[i]) === -1) {
+      i++;
     }
-    while (first < last && this.vowels.indexOf(array[last]) === -1) {
-      last--;
+    while (i < j && this.vowels.indexOf(array[j]) === -1) {
+      j--;
     }
-    [array[first], array[last]] = [array[last], array[first]];
-    first++;
-    last--;
+    [array[i], array[j]] = [array[j], array[i]];
+    i++;
+    j--;
   }
   return array.join("");
 };
