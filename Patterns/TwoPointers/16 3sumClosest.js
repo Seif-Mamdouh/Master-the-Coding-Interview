@@ -21,10 +21,40 @@
 
 
 
+// yea that's a lot better and sexy
+var threeSumClosest = function (nums, target) {
+  nums.sort((a, b) => a - b);
+  let closestSum = Infinity;
+
+  for (let i = 0; i < nums.length; i++) {
+    let left = i + 1;
+    let right = nums.length - 1;
+
+    while (left < right) {
+      let curSum = nums[i] + nums[left] + nums[right];
+
+      if (Math.abs(curSum - target) < Math.abs(closestSum - target)) {
+        closestSum = curSum;
+      }
+
+      if (curSum < target) {
+        left++;
+      } else if (curSum > target) {
+        right--;
+      } else {
+        return curSum;
+      }
+    }
+  }
+
+  return closestSum;
+};
 
 
 
 
+
+// goddddan this shit takes a very long time
 var threeSumClosest = function (nums, target) {
   nums.sort((a, b) => a - b);
 
