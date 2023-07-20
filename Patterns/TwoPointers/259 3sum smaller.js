@@ -66,6 +66,37 @@ Output: 0
 //Problem: 
 // Write a function to return the list of all such triplets instead of the count.
 
+
+var threeSumSmaller = function (nums, target) {
+  let result = 0;
+  nums.sort((a, b) => a - b);
+
+  for (let i = 0; i < nums.length; i++) {
+    let k = i + 1;
+    let j = nums.length - 1;
+
+    while (k < j) {
+      const curSum = nums[i] + nums[k] + nums[j];
+      if (curSum < target) {
+        // If the current triplet's sum is less than the target,
+        // then all the triplets formed by nums[i], nums[k], and any nums[x]
+        // where k < x <= j will also have a sum less than the target.
+        // So, increment the result count by (j - k).
+        result += j - k;
+        k++;
+      } else {
+        j--;
+      }
+    }
+  }
+
+  return result;
+};
+
+
+
+
+
 function triplet_with_smaller_sum(arr, target) {
   arr.sort((a, b) => a - b);
     let triplets = [];
