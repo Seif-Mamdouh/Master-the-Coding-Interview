@@ -20,6 +20,52 @@
 
 
 
+var threeSum = function (nums) {
+  nums.sort((a, b) => a - b);
+  let tripletss = [];
+  var twoSum = (nums, rootIndx, tripletss) => {
+    let i = rootIndx + 1;
+    let j = nums.length - 1;
+
+    while (i < j) {
+      let curSum = nums[rootIndx] + nums[i] + nums[j];
+      if (curSum === 0) {
+        tripletss.push([nums[rootIndx], nums[i], nums[j]]);
+        while (nums[i + 1] === nums[i]) i++;
+        while (nums[j - 1] === nums[j]) j--;
+        i++;
+        j--;
+      } else if (curSum < 0) {
+        i++;
+      } else {
+        j--;
+      }
+    }
+  };
+
+  for (let i = 0; i < nums.length - 2; i++) {
+    if (i === 0 || nums[i] > nums[i - 1]) {
+      twoSum(nums, i, tripletss);
+    }
+  }
+
+  return tripletss;
+};
+
+
+// The twoSum function is called for each element in the sorted nums array, with i as the root index. The goal is to find all unique triplets whose sum is zero. To avoid duplicates, we need to ensure that we only consider distinct elements as the root index.
+
+// The nums array is sorted in ascending order at the beginning of the threeSum function using nums.sort((a, b) => a - b). Sorting the array ensures that duplicate elements are adjacent to each other.
+
+// The condition i === 0 checks if i is the first element (index 0) of the nums array. If it is, then this element will be considered as a new distinct element, and the twoSum function will be called to find unique triplets.
+
+// The condition nums[i] > nums[i - 1] checks if the current element (nums[i]) is greater than the previous element (nums[i - 1]). If it is, then this current element is also distinct, and the twoSum function will be called to find unique triplets.
+
+// If either of the conditions evaluates to true, the twoSum function is called with the current index i as the root index to find all unique triplets starting from that root index. Otherwise, the function does not process the current element as the root index to avoid duplicates.
+
+
+
+
 function search_triplets(arr) {
   arr.sort((a, b) => a - b);
   const triplets = [];
