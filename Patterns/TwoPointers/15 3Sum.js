@@ -19,45 +19,6 @@
 // Output: []
 
 
-// function search_triplets(arr) {
-//   arr.sort((a, b) => a - b);
-//   console.log(arr);
-//   const triplets = [];
-//   for (i = 0; i < arr.length; i++) {
-//     // skip same element to avoid duplicate triplets
-//     if (i > 0 && arr[i] === arr[i - 1]) {
-//       continue;
-//     }
-//     search_pair(arr, -arr[i], i + 1, triplets);
-//   }
-
-//   return triplets;
-// }
-
-// function search_pair(arr, target_sum, left, triplets) {
-//   let right = arr.length - 1;
-//   while (left < right) {
-//     const currentSum = arr[left] + arr[right];
-//     if (currentSum === target_sum) {
-//       // found the triplet
-//       triplets.push([-target_sum, arr[left], arr[right]]);
-//       console.log(triplets)
-//       left += 1;
-//       right -= 1;
-//       while (left < right && arr[left] === arr[left - 1]) {
-//         left += 1; // skip same element to avoid duplicate triplets
-//       }
-//       while (left < right && arr[right] === arr[right + 1]) {
-//         right -= 1; // skip same element to avoid duplicate triplets
-//       }
-//     } else if (target_sum > currentSum) {
-//       left += 1; // we need a pair with a bigger sum
-//     } else {
-//       right -= 1; // we need a pair with a smaller sum
-//     }
-//   }
-// }
-
 
 function search_triplets(arr) {
   arr.sort((a, b) => a - b);
@@ -180,3 +141,42 @@ var threeSum = function (arr) {
 
 
 
+
+// function search_triplets(arr) {
+//   arr.sort((a, b) => a - b);
+//   console.log(arr);
+//   const triplets = [];
+//   for (i = 0; i < arr.length; i++) {
+//     // skip same element to avoid duplicate triplets
+//     if (i > 0 && arr[i] === arr[i - 1]) {
+//       continue;
+//     }
+//     search_pair(arr, -arr[i], i + 1, triplets);
+//   }
+
+//   return triplets;
+// }
+
+// function search_pair(arr, target_sum, left, triplets) {
+//   let right = arr.length - 1;
+//   while (left < right) {
+//     const currentSum = arr[left] + arr[right];
+//     if (currentSum === target_sum) {
+//       // found the triplet
+//       triplets.push([-target_sum, arr[left], arr[right]]);
+//       console.log(triplets)
+//       left += 1;
+//       right -= 1;
+//       while (left < right && arr[left] === arr[left - 1]) {
+//         left += 1; // skip same element to avoid duplicate triplets
+//       }
+//       while (left < right && arr[right] === arr[right + 1]) {
+//         right -= 1; // skip same element to avoid duplicate triplets
+//       }
+//     } else if (target_sum > currentSum) {
+//       left += 1; // we need a pair with a bigger sum
+//     } else {
+//       right -= 1; // we need a pair with a smaller sum
+//     }
+//   }
+// }
