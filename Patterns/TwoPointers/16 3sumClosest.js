@@ -51,7 +51,8 @@ var threeSumClosest = function (nums, target) {
 };
 
 
-
+// Beats 96.53% of users with JavaScript
+// ugh that number is just <<<<<<
 
 
 // goddddan this shit takes a very long time
