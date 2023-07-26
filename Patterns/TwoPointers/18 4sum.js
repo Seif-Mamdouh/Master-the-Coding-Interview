@@ -30,7 +30,7 @@
 
 
 
-// O(n^2) time complexity O(n) space
+// Beats 97.16% of users with JavaScript
 
 var fourSum = function(nums, target) {
     nums.sort((a, b) => a - b);
