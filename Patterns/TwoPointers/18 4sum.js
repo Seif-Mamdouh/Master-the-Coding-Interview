@@ -26,6 +26,50 @@
 // Input: nums = [2,2,2,2,2], target = 8
 // Output: [[2,2,2,2]]
 
+
+
+
+
+// O(n^2) time complexity O(n) space
+
+var fourSum = function(nums, target) {
+    nums.sort((a, b) => a - b);
+    let quads = [];
+    console.log(nums)
+
+    for (let i = 0; i < nums.length; i++) {
+        for (let j = i + 1; j < nums.length; j++) {
+            let low = j + 1;
+            let high = nums.length - 1;
+
+            while (low < high) {
+                let curSum = nums[i] + nums[j] + nums[low] + nums[high];
+
+                if (curSum === target) {
+                    quads.push([nums[i], nums[j], nums[low], nums[high]]);
+                    while (low < high && nums[low] === nums[low + 1]) low++;
+                    while (low < high && nums[high] === nums[high - 1]) high--;
+                    low++;
+                    high--;
+                } else if (curSum < target) {
+                    low++;
+                } else {
+                    high--;
+                }
+            }
+            while (j < nums.length && nums[j] === nums[j + 1]) j++;
+        }
+        while (i < nums.length && nums[i] === nums[i + 1]) i++;
+    }
+
+    return quads
+
+};
+
+
+
+
+
 //answer
 function search_quad(arr, target) {
   arr.sort((a, b) => a - b);
