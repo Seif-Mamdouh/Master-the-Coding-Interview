@@ -32,6 +32,31 @@ Output: false
 Explanation: s becomes "c" while t becomes "b".
 */
 
+var backspaceCompare = function (S, T) {
+  function backSpace(string) {
+    let result = [];
+    for (char of string) {
+      if (char === "#") {
+        result.pop();
+      } else {
+        result.push(char);
+      }
+    }
+    return result.join("");
+  }
+
+  const finalS = backSpace(S);
+  const finalT = backSpace(T);
+
+  if (finalS === finalT) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+
+
 function backspace_compare(str1, str2) {
   // use two pointer approach to compare the strings
   let index1 = str1.length - 1,
