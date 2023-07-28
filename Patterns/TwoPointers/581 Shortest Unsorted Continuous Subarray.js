@@ -27,3 +27,22 @@
 
 // Input: nums = [1]
 // Output: 0
+
+
+
+var findUnsortedSubarray = function (nums) {
+  const stack = [];
+  const result = new Array(arr.length).fill(-1);
+
+  for (let i = 0; i < nums.length; i++) {
+    let j = i + 1;
+
+    while (i < j) {
+      if (j > i) {
+        continue;
+      } else {
+        results.push(nums[iy]);
+      }
+    }
+  }
+};
