@@ -55,3 +55,8 @@ console.log(`Smallest subarray length: ` + minSubArrayLen(4, [1, 4, 4]));
 console.log(
   `Smallest subarray length: ` + minSubArrayLen(11, [1, 1, 1, 1, 1, 1, 1, 1])
 );
+
+
+
+// Runtime: 55 ms, faster than 95.93% of JavaScript online submissions for Minimum Size Subarray Sum.
+// Memory Usage: 46.6 MB, less than 13.32% of JavaScript online submissions for Minimum Size Subarray Sum.
