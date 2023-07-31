@@ -26,30 +26,32 @@
 // Input: target = 11, nums = [1,1,1,1,1,1,1,1]
 // Output: 0
 
-var min_subArrylen = function (s, arr) {
-    let windowSum = 0;
-    let minLength = Infinity;
-    let windowStart = 0;
+var minSubArrayLen = function (target, arr) {
+  let minLength = Infinity;
+  let windowStart = 0;
+  let windowSum = 0;
 
-    for (let windowEnd = 0; windowEnd < arr.length; windowEnd++) {
-        windowSum += arr[windowEnd];
+  for (let windowEnd = 0; windowEnd < arr.length; windowEnd++) {
+    windowSum += arr[windowEnd];
 
-        while (windowSum >= s) {
-            minLength = Math.min(minLength, windowEnd - windowStart + 1);
-
-            windowSum -= arr[windowStart];
-
-            windowStart += 1;
-        }
+    while (windowSum >= target) {
+      minLength = Math.min(minLength, windowEnd - windowStart + 1);
+      windowSum -= arr[windowStart];
+      windowStart += 1;
     }
+  }
 
-    return minLength;
-}
+  if (minLength === Infinity) {
+    return 0;
+  }
+
+  return minLength;
+};
 
 console.log(
-  `Smallest subarray length: ` + min_subArrylen(7, [2, 1, 5, 2, 3, 2])
+  `Smallest subarray length: ` + minSubArrayLen(7, [2, 1, 5, 2, 3, 2])
 );
-console.log(`Smallest subarray length: ` + min_subArrylen(4, [1, 4, 4]));
+console.log(`Smallest subarray length: ` + minSubArrayLen(4, [1, 4, 4]));
 console.log(
-  `Smallest subarray length: ` + min_subArrylen(11, [1, 1, 1, 1, 1, 1, 1, 1])
+  `Smallest subarray length: ` + minSubArrayLen(11, [1, 1, 1, 1, 1, 1, 1, 1])
 );
