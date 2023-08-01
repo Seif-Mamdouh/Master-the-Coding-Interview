@@ -1,30 +1,30 @@
-LC Premuim 
+// LC Premuim 
 
-But I finesseed ;)
+// But I finesseed ;)
 
-Longest Substring with K Distinct Characters (medium)
+// Longest Substring with K Distinct Characters (medium)
 
-Problem Statement
+// Problem Statement
 
-Given a string, find the length of the longest substring in it with no more than K distinct characters.
+// Given a string, find the length of the longest substring in it with no more than K distinct characters.
 
-You can assume that K is less than or equal to the length of the given string.
+// You can assume that K is less than or equal to the length of the given string.
 
-Example 1:
+// Example 1:
 
-Input: String="araaci", K=2
-Output: 4
-Explanation: The longest substring with no more than '2' distinct characters is "araa".
-Example 2:
+// Input: String="araaci", K=2
+// Output: 4
+// Explanation: The longest substring with no more than '2' distinct characters is "araa".
+// Example 2:
 
-Input: String="araaci", K=1
-Output: 2
-Explanation: The longest substring with no more than '1' distinct characters is "aa".
-Example 3:
+// Input: String="araaci", K=1
+// Output: 2
+// Explanation: The longest substring with no more than '1' distinct characters is "aa".
+// Example 3:
 
-Input: String="cbbebi", K=3
-Output: 5
-Explanation: The longest substrings with no more than '3' distinct characters are "cbbeb" & "bbebi".
+// Input: String="cbbebi", K=3
+// Output: 5
+// Explanation: The longest substrings with no more than '3' distinct characters are "cbbeb" & "bbebi".
 
 //First, we will insert characters from the beginning of the string until we have K 
 //distinct characters in the HashMap.
@@ -48,6 +48,40 @@ Explanation: The longest substrings with no more than '3' distinct characters ar
 
 
 //answer 
+
+var lengthOfLongestSubstringKDistinct = function (s, k) {
+  let result = 0;
+  let windowStart = 0;
+  let charFrequency = {};
+
+  for (let windowEnd = 0; windowEnd < s.length; windowEnd++) {
+    const rightChar = s[windowEnd];
+    charFrequency[rightChar] = (charFrequency[rightChar] || 0) + 1;
+
+    // Shrink the window until there are at most k distinct characters
+    while (Object.keys(charFrequency).length > k) {
+      const leftChar = s[windowStart];
+      charFrequency[leftChar]--;
+
+      if (charFrequency[leftChar] === 0) {
+        delete charFrequency[leftChar];
+      }
+
+      windowStart++;
+    }
+
+    result = Math.max(result, windowEnd - windowStart + 1);
+  }
+
+  return result;
+};
+
+console.log(
+  `Length of the longest substring: ` +
+    lengthOfLongestSubstringKDistinct("araaci", 2)
+);
+
+
 function longest_substring_with_k_distinct(str, k) {
   let windowStart = 0,
     maxLength = 0,
@@ -66,13 +100,13 @@ function longest_substring_with_k_distinct(str, k) {
       while (Object.keys(charFrequency).length > k) {
           const leftChar = str[windowStart];
           charFrequency[leftChar] -= 1;
+          // console.log(leftChar);
 
-          console.log(leftChar);
-
-      if (charFrequency[leftChar] === 0) {
+        if (charFrequency[leftChar] === 0) {
           delete charFrequency[leftChar];
-      }
+        }
         windowStart += 1; // shrink the window
+        console.log(str[windowStart] += 1);
         
     }
     // remember the maximum length so far
@@ -84,12 +118,12 @@ function longest_substring_with_k_distinct(str, k) {
 
 // console.log(
 //   `Length of the longest substring: ` +
-//     longest_substring_with_k_distinct("araaci", 2)
+//     longest_substring_with_k_distinct("arabaci", 2)
 // );
-console.log(
-  `Length of the longest substring: ` +
-    longest_substring_with_k_distinct("araaci", 1)
-);
+// console.log(
+//   `Length of the longest substring: ` +
+//     longest_substring_with_k_distinct("araaci", 1)
+// );
 // console.log(
 //   `Length of the longest substring: ` +
 //     longest_substring_with_k_distinct("cbbebi", 3)
