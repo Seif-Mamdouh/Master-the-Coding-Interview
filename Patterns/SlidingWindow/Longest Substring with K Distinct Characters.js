@@ -92,7 +92,6 @@ function longest_substring_with_k_distinct(str, k) {
     const rightChar = str[windowEnd];
     if (!(rightChar in charFrequency)) {
         charFrequency[rightChar] = 0;
-        //console.log(charFrequency);
     }
     charFrequency[rightChar] += 1;
     // shrink the sliding window, until we are left with 'k' distinct characters in

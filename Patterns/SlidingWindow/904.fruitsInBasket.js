@@ -55,7 +55,6 @@ function fruits_into_baskets(fruits) {
     // frequency dictionary
     while (Object.keys(fruitFrequency).length > 2) {
       const leftFruit = fruits[windowStart];
-      //fruitFrequency[leftFruit] -= 1;
       if (fruitFrequency[leftFruit] === 0) {
         delete fruitFrequency[leftFruit];
       }
@@ -69,6 +68,10 @@ function fruits_into_baskets(fruits) {
 
 console.log(
   `Maximum number of fruits: ` + fruits_into_baskets(["A", "B", "C", "A", "C"])
+);
+
+console.log(
+  `Maximum number of fruits: ` + fruits_into_baskets([1, 2, 1])
 );
 // console.log(
 //   `Maximum number of fruits: ` +
