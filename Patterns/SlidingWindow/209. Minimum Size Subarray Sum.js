@@ -52,6 +52,9 @@ console.log(
   `Smallest subarray length: ` + minSubArrayLen(7, [2, 1, 5, 2, 3, 2])
 );
 console.log(`Smallest subarray length: ` + minSubArrayLen(4, [1, 4, 4]));
+
 console.log(
   `Smallest subarray length: ` + minSubArrayLen(11, [1, 1, 1, 1, 1, 1, 1, 1])
 );
+
+console.log(`Smallest subarray length: ` + minSubArrayLen(8, [2, 3, 1, 2, 4, 3]));
