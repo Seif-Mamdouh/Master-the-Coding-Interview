@@ -38,33 +38,34 @@
 // If we had started at the first tree, we would only pick from trees [1,2].
 
 
-function fruits_into_baskets(fruits) {
-  let windowStart = 0,
-    maxLength = 0,
-    fruitFrequency = {};
+var totalFruit = function (fruits) {
+  let windowStart = 0;
+  let fruitsFreq = {};
+  let result = Number.NEGATIVE_INFINITY;
 
-  // try to extend the range [windowStart, windowEnd]
   for (let windowEnd = 0; windowEnd < fruits.length; windowEnd++) {
-    const rightFruit = fruits[windowEnd];
-    if (!(rightFruit in fruitFrequency)) {
-      fruitFrequency[rightFruit] = 0;
+    let rightChar = fruits[windowEnd];
+    if (!(rightChar in fruitsFreq)) {
+      fruitsFreq[rightChar] = 0;
     }
-    fruitFrequency[rightFruit] += 1;
+    fruitsFreq[rightChar]++;
 
-    // shrink the sliding window, until we are left with '2' fruits in the fruit
-    // frequency dictionary
-    while (Object.keys(fruitFrequency).length > 2) {
-      const leftFruit = fruits[windowStart];
-      if (fruitFrequency[leftFruit] === 0) {
-        delete fruitFrequency[leftFruit];
+    while (Object.keys(fruitsFreq).length > 2) {
+      let leftChar = fruits[windowStart];
+      fruitsFreq[leftChar]--;
+
+      if (fruitsFreq[leftChar] === 0) {
+        delete fruitsFreq[leftChar];
       }
-      windowStart += 1; // shrink the window
+
+      windowStart++;
     }
-    maxLength = Math.max(maxLength, windowEnd - windowStart + 1);
+
+    result = Math.max(result, windowEnd - windowStart + 1);
   }
 
-  return maxLength;
-}
+  return result;
+};
 
 console.log(
   `Maximum number of fruits: ` + fruits_into_baskets(["A", "B", "C", "A", "C"])
