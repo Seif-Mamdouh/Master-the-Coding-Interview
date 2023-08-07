@@ -21,6 +21,40 @@
 // // The substring "BBBB" has the longest repeating letters, which is 4.
 
 
+
+
+var characterReplacement = function length_of_longest_substring(str, k) {
+  let windowStart = 0;
+  let mlc = 0;
+  let letterFreq = {};
+
+  let result = 0;
+
+  for (let windowEnd = 0; windowEnd < str.length; windowEnd++) {
+    let rightChar = str[windowEnd];
+    if (!(rightChar in letterFreq)) {
+      letterFreq[rightChar] = 0;
+    }
+    letterFreq[rightChar] += 1;
+
+    mlc = Math.max(mlc, letterFreq[rightChar]);
+
+    let underK = windowEnd - windowStart + 1 - mlc;
+
+    while (underK > k) {
+      let leftChar = str[windowStart];
+      letterFreq[leftChar] -= 1;
+      windowStart += 1;
+    }
+
+    result = Math.max(result, windowEnd - windowStart + 1);
+  }
+
+  return result;
+};
+
+
+
 function length_of_longest_substring(str, k) {
   let windowStart = 0,
     maxLength = 0,
