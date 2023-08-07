@@ -44,6 +44,55 @@ if the character going out was part of the pattern, put it back in the frequency
 
 */
 
+
+
+function find_permutation(pattern, str) {
+  let windowStart = 0;
+  let charFreq = {};
+  let matched = 0;
+
+  // counting charcters in pattern string
+  for (let i = 0; i < pattern.length; i++) {
+    let char = pattern[i];
+    if (!(char in charFreq)) {
+      charFreq[char] = 0;
+    }
+    charFreq[char] += 1;
+  }
+
+  // counting charFreq in str string
+  for (let windowEnd = 0; windowEnd < str.length; windowEnd++) {
+    let rightChar = str[windowEnd];
+    if (rightChar in charFreq) {
+      charFreq[rightChar] -= 1;
+
+      if (charFreq[rightChar] === 0) {
+        matched += 1;
+      }
+    }
+
+    charCount = Object.keys(charFreq).length;
+
+    if (matched === charCount) {
+      return true;
+    }
+
+    if (windowEnd >= pattern.length - 1) {
+      let leftChar = str[windowStart];
+      windowStart += 1;
+      if (leftChar in charFreq) {
+        if (charFreq[leftChar] === 0) {
+          matched -= 1;
+        }
+
+        charFreq[leftChar] += 1;
+      }
+    }
+  }
+
+  return false;
+}
+
 function find_permutation(str, pattern) {
     let windowStart = 0,
         charFrequency = {},
