@@ -37,6 +37,31 @@
 // If we have more than ‘k’ remaining 0s, 
 // we should shrink the window as we are not allowed to replace more than ‘k’ 0s.
 
+
+var longestOnes = function (nums, k) {
+  let windowStart = 0;
+  let zeroCount = 0;
+
+  let result = 0;
+
+  for (let windowEnd = 0; windowEnd < nums.length; windowEnd++) {
+    if (nums[windowEnd] === 0) {
+      zeroCount += 1;
+    }
+
+    while (zeroCount > k) {
+      if (nums[windowStart] === 0) {
+        zeroCount -= 1;
+      }
+      windowStart += 1;
+    }
+
+    result = Math.max(result, windowEnd - windowStart + 1);
+  }
+
+  return result;
+};
+
 function length_of_longest_substring(arr, k) {
     let windowStart = 0,
       maxLength = 0,
@@ -46,11 +71,7 @@ function length_of_longest_substring(arr, k) {
       if (arr[windowEnd] === 1) {
         maxOnesCount += 1;
       }
-      // current window size is from windowStart to windowEnd, overall we have a maximum
-      // of 1s repeating a maximum of 'maxOnesCount' times, this means that we can have a
-      //  window with 'maxOnesCount' 1s and the remaining are 0s which should replace
-      // with 1s. Now, if the remaining 0s are more than 'k', it is the time to shrink
-      // the window as we are not allowed to replace more than 'k' Os.
+
       if (windowEnd - windowStart + 1 - maxOnesCount > k) {
         if (arr[windowStart] === 1) {
           maxOnesCount -= 1;
