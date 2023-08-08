@@ -1,5 +1,8 @@
 # Mastering-the-Coding-Interview
 
+#Before you start anything read this
+https://mohycs.medium.com/how-to-crack-the-coding-interview-the-7-phases-of-interview-prep-975569fbc410
+
 Helpful LeetCode links
 
 Neetcode
