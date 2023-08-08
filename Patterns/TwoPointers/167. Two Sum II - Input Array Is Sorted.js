@@ -37,22 +37,38 @@
 // Solutions
 
 //normal two pointers
-var twoSum = function (nums, target) {
-  let left = 0;
-  let right = nums.length - 1;
+var twoSum = function(nums, target) {
+    let left = 0;
+    let right = nums.length - 1;
 
-  while (left <= right) {
-    let sum = nums[left] + nums[right];
+    let result = []
+    while(left < right){
+        const curSum = nums[left] + nums[right]
+        
+        if(curSum === target){
+            result.push(left + 1, right + 1)
+        }
 
-    if (sum == target) {
-      return [left + 1, right + 1];
-    } else if (sum < target) {
-      left += 1;
-    } else {
-      right -= 1;
-    }
-  }
-};
+        if(curSum > target){
+            right--
+        } else {
+            left ++
+        }
+    }    
+
+    return result;
+}
+
+// Runtime
+// 50 ms
+// Beats
+// 95.77%
+
+// Memory
+// 42.7 MB
+// Beats
+// 63.54%
+
 
 //Hash Map
 var twoSum = function (nums, target) {
