@@ -30,24 +30,51 @@
 // Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
 
 
-// function non_repeat_substring(s) {
-//   let windowStart = 0;
-//   let charIndex = {};
-//   let maxLength = 0;
-    
-//     for(let windowEnd = 0; windowEnd > s.length; windowEnd++){
-//       const rightChar = s[windowEnd];
-      
-//       if (rightChar in charIndex) {
-//         windowStart = Math.max(windowStart, charIndex[rightChar] + 1);
-//       }
-//       indexMap[rightChar] = windowEnd;
+var lengthOfLongestSubstring = function (s) {
+  const set = new Set();
+  let l = 0;
+  let max = 0;
 
-//       maxLength = Math.max(maxLength, windowEnd - windowStart + 1);
-//     }
-  
-//   return maxLength;
-// }
+  for (let r = 0; r < s.length; r++) {
+    while (set.has(s[r])) {
+      set.delete(s[l]);
+      l++;
+    }
+    set.add(s[r]);
+    max = Math.max(max, set.size);
+  }
+  return max;
+};
+
+
+var lengthOfLongestSubstring = function (str) {
+  let windowStart = 0;
+  let charFreq = {};
+  let result = 0;
+
+  for (let windowEnd = 0; windowEnd < str.length; windowEnd++) {
+    let rightChar = str[windowEnd];
+
+    if (!(rightChar in charFreq)) {
+      charFreq[rightChar] = 0;
+    }
+
+    charFreq[rightChar] += 1;
+
+    while (Object.values(charFreq).some((count) => count > 1)) {
+      let leftChar = str[windowStart];
+      charFreq[leftChar] -= 1;
+      if (charFreq[leftChar] === 0) {
+        delete charFreq[leftChar];
+      }
+      windowStart += 1;
+    }
+
+    result = Math.max(result, windowEnd - windowStart + 1);
+  }
+
+  return result;
+};
 
 function non_repeat_substring(str) {
     let windowStart = 0,
@@ -77,7 +104,24 @@ console.log(`Length of the longest substring: ${non_repeat_substring('aabccbb')}
 console.log(`Length of the longest substring: ${non_repeat_substring('abbbb')}`);
 // console.log(`Length of the longest substring: ${non_repeat_substring('abccde')}`);
 
+// function non_repeat_substring(s) {
+//   let windowStart = 0;
+//   let charIndex = {};
+//   let maxLength = 0;
+    
+//     for(let windowEnd = 0; windowEnd > s.length; windowEnd++){
+//       const rightChar = s[windowEnd];
+      
+//       if (rightChar in charIndex) {
+//         windowStart = Math.max(windowStart, charIndex[rightChar] + 1);
+//       }
+//       indexMap[rightChar] = windowEnd;
 
+//       maxLength = Math.max(maxLength, windowEnd - windowStart + 1);
+//     }
+  
+//   return maxLength;
+// }
 
 
 
