@@ -13,3 +13,4 @@ var dailyTemperatures = function (T) {
 
   return result;
 };
+
