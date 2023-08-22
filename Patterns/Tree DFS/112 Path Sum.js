@@ -58,6 +58,29 @@ Here are the steps for our Binary Tree Path Sum problem:
 */
 
 
+var hasPathSum = function (root, sum) {
+  if (!root) {
+    return false;
+  }
+
+  sum -= root.val;
+
+  if (sum === 0 && root.left == null && root.right == null) {
+    return true;
+  }
+
+  if (hasPathSum(root.left, sum)) {
+    return true;
+  }
+
+  if (hasPathSum(root.right, sum)) {
+    return true;
+  }
+
+  return false;
+};
+
+
 
 class TreeNode {
   constructor(val, left = null, right = null) {
