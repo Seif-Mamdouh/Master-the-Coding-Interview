@@ -22,6 +22,34 @@ follow the same approach to calculate the path number of each node.
 */
 
 
+var pathSum = function (root, targetSum) {
+  let result = [];
+
+  if (!root) {
+    return result;
+  }
+
+  targetSum -= root.val;
+
+  if (targetSum === 0 && root.left == null && root.right == null) {
+    result.push([root.val]);
+  }
+
+  const leftPath = pathSum(root.left, targetSum);
+  const rightPath = pathSum(root.right, targetSum);
+
+  for (let path of leftPath) {
+    result.push([root.val, ...path]);
+  }
+
+  for (let path of rightPath) {
+    result.push([root.val, ...path]);
+  }
+
+  return result;
+};
+
+
 class TreeNode {
   constructor(val, left = null, right = null) {
     this.val = val;
