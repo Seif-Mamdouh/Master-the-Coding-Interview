@@ -1,26 +1,29 @@
 // stack
 var sumNumbers = function (root) {
-  let result = 0;
-  const stack = [];
+    if (!root) return 0;
 
-  stack.push([root, root.val]);
+    let result = 0;
+    const stack = [root];
 
-  while (stack.length > 0) {
-    const [node, num] = stack.pop();
+    while (stack.length > 0) {
+      const node = stack.pop();
 
-    if (!node.left && !node.right) {
-      result += num;
+      if (!node.left && !node.right) {
+        result += node.val;
+      }
+
+      if (node.right) {
+        node.right.val = node.val * 10 + node.right.val;
+        stack.push(node.right);
+      }
+
+      if (node.left) {
+        node.left.val = node.val * 10 + node.left.val;
+        stack.push(node.left);
+      }
     }
 
-    if (node.right !== null) {
-      stack.push([node.right, num * 10 + node.right.val]);
-    }
-
-    if (node.left) {
-      stack.push([node.left, num * 10 + node.left.val]);
-    }
-  }
-  return result;
+    return result;
 };
 
 
