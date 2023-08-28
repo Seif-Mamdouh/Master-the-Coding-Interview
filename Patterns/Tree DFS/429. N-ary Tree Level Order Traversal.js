@@ -12,16 +12,14 @@ var levelOrder = function (root) {
 
     for (let i = 0; i < levelSize; i++) {
       const node = queue.shift();
+      console.log(node);
       curLevel.push(node.val);
 
-      if (node.left !== null) {
-        queue.push(node.left);
-      }
-
-      if (node.right !== null) {
-        queue.push(node.right);
+      for (const child of node.children) {
+        queue.push(child);
       }
     }
+
     result.push(curLevel);
   }
 
