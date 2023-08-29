@@ -9,6 +9,9 @@ Helpful LeetCode links
 Neetcode
 https://neetcode.io/
 
+Top-LC-Posts
+https://leetcode.com/discuss/interview-experience/2016202/top-leetcode-posts-that-you-cannot-miss
+
 Top 75 LeetCode Questions.
 
 https://docs.google.com/spreadsheets/d/1A2PaQKcdwO_lwxz9bAnxXnIQayCouZP6d-ENrBz_NXc/edit#gid=0
