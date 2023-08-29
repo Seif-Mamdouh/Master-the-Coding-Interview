@@ -9,6 +9,9 @@ Helpful LeetCode links
 Neetcode
 https://neetcode.io/
 
+The only list you need for interview prep
+https://leetcode.com/discuss/interview-question/2069641/the-only-lists-you-need-for-your-interview-preparation
+
 Top-LC-Posts
 https://leetcode.com/discuss/interview-experience/2016202/top-leetcode-posts-that-you-cannot-miss
 
