@@ -21,6 +21,32 @@ follow the same approach to calculate the path number of each node.
 
 */
 
+var pathSum = function (root, targetSum) {
+  if (!root) {
+    return [];
+  }
+
+  const result = [];
+  const stack = [[root, targetSum, []]];
+
+  while (stack.length > 0) {
+    const [node, remainingSum, path] = stack.pop();
+
+    if (!node.left && !node.right && node.val === remainingSum) {
+      result.push([...path, node.val]);
+    }
+
+    if (node.left) {
+      stack.push([node.left, remainingSum - node.val, [...path, node.val]]);
+    }
+
+    if (node.right) {
+      stack.push([node.right, remainingSum - node.val, [...path, node.val]]);
+    }
+  }
+
+  return result;
+};
 
 var pathSum = function (root, targetSum) {
   let result = [];
