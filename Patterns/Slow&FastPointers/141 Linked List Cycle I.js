@@ -30,6 +30,29 @@
 // Explanation: There is a cycle in the linked list, where the tail connects to the 0th node.
 
 
+
+// better answer
+var hasCycle = function find_cycle_length(head) {
+  if (!head || !head.next) {
+    return false;
+  }
+
+  let slow = head;
+  let fast = head;
+
+  while (fast !== null && fast.next !== null) {
+    slow = slow.next;
+    fast = fast.next.next;
+
+    if (slow === fast) {
+      return true;
+    }
+  }
+
+  return false;
+};
+
+
 //answer 
 class Node {
   constructor(value, next = null) {
