@@ -1,3 +1,16 @@
+// given flights in
+// EWR -> LHR -> NHR -> HRT -> SFO
+
+// if I give you a list of data such as
+// [ HRT -> SFO 
+// LHR -> NHR
+// NHR -> HRT
+//  EWR -> LHR]
+
+// return the start point, middle and end
+
+// explain how you found the middle?
+
 function findStartMiddleEnd(data) {
   const flights = {};
 
