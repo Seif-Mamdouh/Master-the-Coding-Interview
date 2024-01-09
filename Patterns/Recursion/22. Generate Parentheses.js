@@ -1,3 +1,28 @@
+//better approach
+var generateParenthesis = function (n) {
+  let result = [];
+
+  let backTrack = function (open, close, parenthesis) {
+    console.log(parenthesis);
+    if (open === close && open === n) {
+      result.push(parenthesis);
+      return;
+    }
+    if (open < n) {
+      const updatedParenthesis = parenthesis + "(";
+      backTrack(open + 1, close, updatedParenthesis);
+    }
+
+    if (close < open) {
+      const updatedParenthesis = parenthesis + ")";
+      backTrack(open, close + 1, updatedParenthesis);
+    }
+  };
+
+  backTrack(0, 0, "");
+  return result;
+};
+
 var generateParenthesis = function (n) {
   let result = [];
   let current = "";
