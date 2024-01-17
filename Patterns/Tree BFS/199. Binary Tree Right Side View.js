@@ -3,6 +3,37 @@ var rightSideView = function (root) {
     return [];
   }
 
+  let res = [];
+  let queue = [root];
+
+  while (queue.length > 0) {
+    let levelSize = queue.length;
+    let right = null;
+
+    for (let i = 0; i < levelSize; i++) {
+      const node = queue.shift();
+      right = node.val;
+
+      if (node.left) {
+        queue.push(node.left);
+      }
+
+      if (node.right) {
+        queue.push(node.right);
+      }
+    }
+
+    res.push(right);
+  }
+
+  return res;
+};
+
+var rightSideView = function (root) {
+  if (root === null) {
+    return [];
+  }
+
   const queue = [];
   queue.push(root);
 
