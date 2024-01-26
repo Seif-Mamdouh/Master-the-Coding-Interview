@@ -88,6 +88,62 @@ answer = 3
 
 
 
+var numIslands = function (grid) {
+  if (!grid || grid.length === 0) {
+    return 0;
+  }
+
+  const rows = grid.length;
+  const cols = grid[0].length;
+  const visit = new Set();
+  let islands = 0;
+
+  function bfs(r, c) {
+    const queue = [];
+    visit.add(`${r},${c}`);
+    queue.push([r, c]);
+
+    while (queue.length > 0) {
+      const [row, col] = queue.shift();
+      const directions = [
+        [1, 0],
+        [-1, 0],
+        [0, 1],
+        [0, -1],
+      ];
+
+      for (const [dr, dc] of directions) {
+        const newRow = row + dr;
+        const newCol = col + dc;
+
+        if (
+          newRow >= 0 &&
+          newRow < rows &&
+          newCol >= 0 &&
+          newCol < cols &&
+          grid[newRow][newCol] === "1" &&
+          !visit.has(`${newRow},${newCol}`)
+        ) {
+          queue.push([newRow, newCol]);
+          visit.add(`${newRow},${newCol}`);
+        }
+      }
+    }
+  }
+
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      if (grid[r][c] === "1" && !visit.has(`${r},${c}`)) {
+        bfs(r, c);
+        islands++;
+      }
+    }
+  }
+
+  return islands;
+};
+
+
 
 function count_island_DFS(matrix) {
   let rows = matrix.length;
