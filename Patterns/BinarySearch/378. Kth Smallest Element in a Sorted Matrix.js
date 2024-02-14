@@ -1,4 +1,37 @@
+var kthSmallest = function (matrix, k) {
+  let left = matrix[0][0];
+  let right = matrix[matrix.length - 1][matrix[0].length - 1];
 
+  while (left < right) {
+    let mid = Math.floor((left + right) / 2);
+    let count = countLessThan(matrix, mid);
+
+    if (count < k) {
+      left = mid + 1;
+    } else {
+      right = mid;
+    }
+  }
+
+  return left;
+};
+
+function countLessThan(matrix, target) {
+  let count = 0;
+  let row = matrix.length - 1;
+  let col = 0;
+
+  while (row >= 0 && col < matrix[0].length) {
+    if (matrix[row][col] <= target) {
+      count += row + 1; // Count all elements in the current column
+      col++;
+    } else {
+      row--;
+    }
+  }
+
+  return count;
+}
 
 // O(NlogN)
 // O(1)
@@ -46,24 +79,20 @@ function binarySearch(arr, target) {
   return left;
 }
 
-
-
 //Brute Force
-var kthSmallest = function(matrix, k) {
+var kthSmallest = function (matrix, k) {
+  let flattenedArray = [];
 
-    let flattenedArray = [];
-
-    for(let i = 0; i < matrix.length; i++){
-        for(let j = 0; j < matrix[i].length; j++){
-            flattenedArray.push(matrix[i][j]);
-        }
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      flattenedArray.push(matrix[i][j]);
     }
+  }
 
-    flattenedArray.sort((a, b) => a - b);
+  flattenedArray.sort((a, b) => a - b);
 
-    return flattenedArray[k - 1];
+  return flattenedArray[k - 1];
 };
-
 
 //O(N^2)
 //O(N)
