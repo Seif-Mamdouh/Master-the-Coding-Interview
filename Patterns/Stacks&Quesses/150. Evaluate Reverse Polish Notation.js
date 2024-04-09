@@ -30,3 +30,6 @@ var evalRPN = function (tokens) {
 
   return stack.pop();
 };
+
+
+// console.log(!isNaN(parseInt(3)));
