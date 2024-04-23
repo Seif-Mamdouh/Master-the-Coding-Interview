@@ -27,19 +27,26 @@
 // Input: strs = ["a"]
 // Output: [["a"]]
 
-
 var groupAnagrams = function (strs) {
   let anagramMap = new Map();
 
   let res = [];
 
   for (let word of strs) {
-    let sortedWord = [...word].sort().join("");
+    let letterCount = new Array(26).fill(0);
+    
+    for (let char of word) {
+      letterCount[char.charCodeAt(0) - "a".charCodeAt(0)]++;
+    }
 
-    if (anagramMap.has(sortedWord)) {
-      anagramMap.get(sortedWord).push(word);
+    let key = letterCount.join("-");
+
+    console.log(key);
+
+    if (anagramMap.has(key)) {
+      anagramMap.get(key).push(word);
     } else {
-      anagramMap.set(sortedWord, [word]);
+      anagramMap.set(key, [word]);
     }
   }
 
@@ -51,46 +58,71 @@ var groupAnagrams = function (strs) {
 };
 
 
+groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]);
+
+// var groupAnagrams = function (strs) {
+//   let anagramMap = new Map();
+
+//   let res = [];
+
+//   for (let word of strs) {
+//     let sortedWord = [...word].sort().join("");
+
+//     if (anagramMap.has(sortedWord)) {
+//       anagramMap.get(sortedWord).push(word);
+//     } else {
+//       anagramMap.set(sortedWord, [word]);
+//     }
+//   }
+
+//   for (let anagramValues of anagramMap.values()) {
+//     res.push(anagramValues);
+//   }
+
+//   return res;
+// };
 
 
-//updated 
-let words = {};
-let collectedWords = [];
 
-//iterate through words
-for (let str of strs) {
-  //words hash to find and store arrays of words
 
-  //sorts the letters
-  let letters = str.split("").sort().join("");
+// //updated 
+// let words = {};
+// let collectedWords = [];
 
-  //create a hash key-value pair of the sorted letters of the word if it doesn't exist.
-  words[letters] = words[letters] || [];
+// //iterate through words
+// for (let str of strs) {
+//   //words hash to find and store arrays of words
 
-  //add word to value of the key which matches its letters
-  words[letters].push(str);
-}
+//   //sorts the letters
+//   let letters = str.split("").sort().join("");
 
-//push these arrrays into the collectedwords array
+//   //create a hash key-value pair of the sorted letters of the word if it doesn't exist.
+//   words[letters] = words[letters] || [];
 
-//time to iterate through words hash keys
-for (let key in words) {
-  collectedWords.push(words[key]);
-}
+//   //add word to value of the key which matches its letters
+//   words[letters].push(str);
+// }
 
-return collectedWords;
+// //push these arrrays into the collectedwords array
 
-const groupAnagrams = function (strs) {
-  let groups = {};
-  strs.forEach((str) => {
-    const sortedStr = str.split("").sort().join("");
-    if (groups[sortedStr]) {
-      groups[sortedStr].push(str);
-    } else {
-      groups[sortedStr] = [str];
-    }
-  });
+// //time to iterate through words hash keys
+// for (let key in words) {
+//   collectedWords.push(words[key]);
+// }
 
-  return Object.values(groups);
-};
+// return collectedWords;
+
+// const groupAnagrams = function (strs) {
+//   let groups = {};
+//   strs.forEach((str) => {
+//     const sortedStr = str.split("").sort().join("");
+//     if (groups[sortedStr]) {
+//       groups[sortedStr].push(str);
+//     } else {
+//       groups[sortedStr] = [str];
+//     }
+//   });
+
+//   return Object.values(groups);
+// };
 
