@@ -28,6 +28,31 @@
 // Output: [["a"]]
 
 
+var groupAnagrams = function (strs) {
+  let anagramMap = new Map();
+
+  let res = [];
+
+  for (let word of strs) {
+    let sortedWord = [...word].sort().join("");
+
+    if (anagramMap.has(sortedWord)) {
+      anagramMap.get(sortedWord).push(word);
+    } else {
+      anagramMap.set(sortedWord, [word]);
+    }
+  }
+
+  for (let anagramValues of anagramMap.values()) {
+    res.push(anagramValues);
+  }
+
+  return res;
+};
+
+
+
+
 //updated 
 let words = {};
 let collectedWords = [];
