@@ -3,6 +3,37 @@ var levelOrder = function (root) {
     return [];
   }
 
+  let queue = [root];
+
+  let result = [];
+
+  while (queue.length > 0) {
+    let curLevel = [];
+    const levelSize = queue.length;
+
+    for (let i = 0; i < levelSize; i++) {
+      let node = queue.shift();
+      curLevel.push(node.val);
+
+      if (node.left) {
+        queue.push(node.left);
+      }
+
+      if (node.right) {
+        queue.push(node.right);
+      }
+    }
+    result.push(curLevel);
+  }
+
+  return result;
+};
+
+var levelOrder = function (root) {
+  if (!root) {
+    return [];
+  }
+
   const result = [];
   const queue = [root];
 
