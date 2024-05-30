@@ -1,25 +1,24 @@
 var kthSmallest = function (root, k) {
   let stack = [];
-  // let count = 0;
   let result = 0;
 
-  while (root || stack.length > 0) {
-    while (root) {
-      stack.push(root);
-      root = root.left;
+  let cur = root;
+
+  while (cur !== null || stack.length > 0) {
+    while (cur !== null) {
+      stack.push(cur);
+      cur = cur.left;
     }
 
-    root = stack.pop();
+    cur = stack.pop();
     k--;
 
     if (k === 0) {
-      result = root.val;
-      break;
+      result += cur.val;
     }
 
-    root = root.right;
+    cur = cur.right;
   }
-
   return result;
 };
 
