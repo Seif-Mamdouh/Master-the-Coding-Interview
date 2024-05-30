@@ -1,22 +1,43 @@
 var isValidBST = function (root) {
+  if (!root) {
+    return false;
+  }
+
   let stack = [];
+
+  let cur = root;
+
   let prev = null;
 
-  while (root || stack.length > 0) {
-    while (root) {
-      stack.push(root);
-      root = root.left;
+  while (cur !== null || stack.length > 0) {
+    // Traverse to the leftmost node
+    while (cur !== null) {
+      console.log(`Pushing to stack: ${cur.val}`);
+      stack.push(cur);
+      cur = cur.left;
     }
 
-    root = stack.pop();
+    // Process the node
+    cur = stack.pop();
+    console.log(`Popped from stack: ${cur.val}`);
 
-    if (prev !== null && root.val <= prev.val) {
+    // Check the BST property
+    if (prev !== null && cur.val <= prev.val) {
+      console.log(
+        `BST violation: current value (${cur.val}) is not greater than previous value (${prev.val})`
+      );
       return false;
     }
 
-    prev = root;
-    root = root.right;
+    // Update prev to the current node
+    console.log(`Updating previous node to: ${cur.val}`);
+    prev = cur;
+
+    // Move to the right subtree
+    cur = cur.right;
   }
+
+  console.log("In-order traversal complete. The tree is a valid BST.");
 
   return true;
 };
