@@ -1,6 +1,6 @@
 //write a function that take in a array and a query array and reverse the array based on the queries
 
-const { func } = require("prop-types");
+// const { func } = require("prop-types");
 
 // function reverseArrayQueries(arr, queries) {
 
