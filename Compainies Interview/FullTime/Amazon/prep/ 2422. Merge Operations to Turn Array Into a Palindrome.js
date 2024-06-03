@@ -47,7 +47,7 @@ var minimumOperations = function (nums) {
     if (nums[left] < nums[right]) {
       nums[left + 1] += nums[left];
       left++;
-      count++;
+
     }
 
     if (nums[left] > nums[right]) {
