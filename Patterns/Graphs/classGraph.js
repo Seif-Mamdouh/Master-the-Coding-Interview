@@ -40,6 +40,13 @@ class Graph {
     if (index1 !== -1) {
       neigh1.splice(index1, 1);
     }
+      
+      
+    let neigh2 = this.adjacencyList.get(vertex2);
+    let index2 = neigh2.indexOf(vertex1);
+    if (index2 !== -1) {
+      neigh2.splice(index2, 1);
+    }
   }
 
   getVertices() {
@@ -50,11 +57,9 @@ class Graph {
     let num1 = this.adjacencyList.get(vertex1);
 
     if (num1.includes(vertex2)) {
-      console.log(`${vertex1} has ${vertex2}`);
-      console.log("Yes");
+      console.log(`Yes, ${vertex1} has ${vertex2}`);
     } else {
-      console.log(`${vertex1} does not have ${vertex2}`);
-      console.log("No");
+      console.log(`No, ${vertex1} does not have ${vertex2}`);
     }
   }
 
@@ -73,16 +78,23 @@ class Graph {
   }
 
   getEdges() {
-    const edges = [];
-    for (const [vertex1, neighbors] of this.adjacencyList.entries()) {
-      for (const vertex2 of neighbors) {
-        if (vertex1 < vertex2) {
-          edges.push([vertex1, vertex2]);
-        }
-      }
-    }
-    console.log(`All the edges are ${edges}`)
-    return edges;
+     const edges = new Set();
+     for (const [vertex1, neighbors] of this.adjacencyList.entries()) {
+       for (const vertex2 of neighbors) {
+         const edge =
+           vertex1 < vertex2
+             ? `${vertex1},${vertex2}`
+             : `${vertex2},${vertex1}`;
+         edges.add(edge);
+       }
+     }
+     const edgesArray = Array.from(edges).map((edge) =>
+       edge.split(",").map(Number)
+     );
+     console.log(
+       `All the edges are ${edgesArray.map((e) => e.join(",")).join(", ")}`
+     );
+     return edgesArray;
   }
 
   getNeighbors(vertex) {
@@ -122,4 +134,4 @@ graph.getVertexCount();
 
 graph.getNeighbors(1)
 
-graph.getEdges()
+graph.getEdges();
