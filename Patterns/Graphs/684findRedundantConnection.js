@@ -12,14 +12,11 @@ var findRedundantConnection = function (edges) {
         console.log(`Initial parent of node ${n}: ${p}`);
         
         while (p !== par[p]) {
-            console.log(`Node ${p} is not a root. Its parent is ${par[p]}`);
             par[p] = par[par[p]]; 
-            console.log(`Path compression: setting parent of node ${p} to grand parent${par[p]}`);
+            
             p = par[p];
-            console.log(`Moving up the tree: new parent of node ${n} is ${p}`);
+
         }
-        
-        console.log(`Root of node ${n} is ${p}`);
         return p;
     };
 
@@ -53,33 +50,30 @@ const result = findRedundantConnection([[1, 2], [1, 3], [2, 3]]);
 console.log(result);
 
 
+const testCases = [
+    {
+        edges: [[1, 2], [1, 3], [2, 3]],
+        expected: [2, 3]
+    },
+    {
+        edges: [[1, 2], [2, 3], [3, 4], [1, 4], [1, 5]],
+        expected: [1, 4]
+    },
+    {
+        edges: [[1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 3]],
+        expected: [6, 3]
+    },
+    {
+        edges: [[1, 2], [2, 3], [3, 1]],
+        expected: [3, 1]
+    },
+    {
+        edges: [[1, 2], [2, 3], [3, 4], [4, 5], [5, 1]],
+        expected: [5, 1]
+    }
+];
 
-
-
-// const testCases = [
-//     {
-//         edges: [[1, 2], [1, 3], [2, 3]],
-//         expected: [2, 3]
-//     },
-//     {
-//         edges: [[1, 2], [2, 3], [3, 4], [1, 4], [1, 5]],
-//         expected: [1, 4]
-//     },
-//     {
-//         edges: [[1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 3]],
-//         expected: [6, 3]
-//     },
-//     {
-//         edges: [[1, 2], [2, 3], [3, 1]],
-//         expected: [3, 1]
-//     },
-//     {
-//         edges: [[1, 2], [2, 3], [3, 4], [4, 5], [5, 1]],
-//         expected: [5, 1]
-//     }
-// ];
-
-// testCases.forEach(({ edges, expected }, index) => {
-//     const result = findRedundantConnection(edges);
-//     console.log(`Test Case ${index + 1}:`, result.toString() === expected.toString() ? 'Passed' : 'Failed');
-// });
+testCases.forEach(({ edges, expected }, index) => {
+    const result = findRedundantConnection(edges);
+    console.log(`Test Case ${index + 1}:`, result.toString() === expected.toString() ? 'Passed' : 'Failed');
+});
