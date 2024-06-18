@@ -1,45 +1,46 @@
-var validTree = function (n, edges) {
-  let adjlist = new Array(n).fill().map(() => []);
+// # Graph BFS:
+//   # Create a graph if needed.
+//   # Initialize a queue with starting node, and initialize a visited set.
+//   # Initialize anything else necessary for the solution.
 
-  for (let [to, from] of edges) {
-    adjlist[to].push(from);
-    adjlist[from].push(to);
-  }
+//   # While queue is not empty:
+//     # Pop off a node from the queue and mark it as visited.
+//     # Do whatever you need with the node.
+//     # Add unvisited neighboring nodes to the queue. 
 
-  let visited = new Array(n).fill(false);
+//   # (Note) Finished traversing through graph.
 
-  const bfs = (start) => {
-    let queue = [start];
-    let parent = new Array(n).fill(-1);
+// # Time Complexity: O(n)
+// # Space Complexity: O(n)
+
+var validTree = function(n, edges) {
+    if (n === 0) return false;
+    if (edges.length !== n - 1) return false; // A valid tree must have exactly n-1 edges
+
+    let adjlist = new Array(n).fill().map(() => []);
+
+    for (let [to, from] of edges) {
+        adjlist[to].push(from);
+        adjlist[from].push(to);
+    }
+
+    let queue = [0];
+    let visited = new Set();
+    visited.add(0);
 
     while (queue.length > 0) {
-      const node = queue.shift();
-
-      if (!visited[node]) {
-        visited[node] = true;
+        let node = queue.shift();
 
         for (let neigh of adjlist[node]) {
-          if (!visited[neigh]) {
+            if (visited.has(neigh)) continue;
+            visited.add(neigh);
             queue.push(neigh);
-            parent[neigh] = node;
-          } else if (neigh !== parent[node]) {
-            return true;
-          }
         }
-      }
     }
-    return false;
-  };
 
-  if (bfs(0)) {
-    return false;
-  }
-
-  for (let i = 0; i < n; i++) {
-    if (!visited[i]) {
-      return false;
-    }
-  }
-
-  return true;
+    return visited.size === n;
 };
+
+
+
+
