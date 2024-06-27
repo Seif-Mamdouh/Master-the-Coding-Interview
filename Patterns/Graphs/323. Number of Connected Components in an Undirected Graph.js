@@ -9,7 +9,7 @@
 
 
 // Input: n = 5, edges = [[0,1],[1,2],[2,3],[3,4]]
-// Output: 1
+// Output: 1 
 
 const countComponents = (n, edges) => {
   const adjList = new Array(n).fill().map(() => []);
