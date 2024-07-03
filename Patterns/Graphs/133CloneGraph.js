@@ -24,7 +24,7 @@ var cloneGrpah = function (node) {
         }
         return copy;
     }
-
+    return dfs(node);
 }
 
 

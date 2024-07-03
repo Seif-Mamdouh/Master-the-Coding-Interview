@@ -2,6 +2,7 @@ var closedIsland = function(grid) {
     
     let rows = grid.length;
     let cols = grid[0].length;
+    let visited = Array.from({ length: rows }, () => Array(cols).fill(false));
 
     const dfs = (grid, row, col) => {
         if (row < 0 || col < 0 || row >= rows || col >= cols) {
@@ -12,7 +13,7 @@ var closedIsland = function(grid) {
             return true;
         }
 
-        grid[row][col] = 1
+        grid[row][col] = true;
 
         let up = dfs(grid, row - 1, col);
         let down = dfs(grid, row + 1, col);
