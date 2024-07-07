@@ -1,3 +1,22 @@
+var subsets = function (nums) {
+
+    let result = [];
+
+    let subSetGenerator = function (start, currSubSet) {
+
+        result.push(currSubSet);
+
+        for (let i = start; i < nums.length; i++) {
+            const updatedSubSet = currSubSet.concat(nums[i]);
+            subSetGenerator(i + 1, updatedSubSet);
+        }
+    }
+
+    subSetGenerator(0, []);
+    return result;
+};
+
+
 //Concurrency 
 function time() {
   var subsets = async function (nums) {
