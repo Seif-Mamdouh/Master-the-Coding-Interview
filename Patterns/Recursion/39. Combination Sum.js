@@ -5,7 +5,6 @@ var combinationSum = function (nums, target) {
 
     let backtrack = function (currIndex, total) {
 
-
         if (total === 0) {
             result.push([...currComb])
             return
