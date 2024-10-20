@@ -29,9 +29,8 @@
 // Type 'l' by pressing button 5 once.
 // Type 'e' by pressing button 3 once.
 // A total of 5 button presses are needed, so return 5.
+
 // Example 2:
-
-
 // Input: s = "abcdefghijkl"
 // Output: 15
 // Explanation: One optimal way to setup your keypad is shown above.
