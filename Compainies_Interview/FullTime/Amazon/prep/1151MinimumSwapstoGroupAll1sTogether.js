@@ -38,40 +38,40 @@
  * @param {number[]} data
  * @return {number}
  */
-// var minSwaps = function (data) {
-//   let totalNumOfOnes = 0;
+var minSwaps = function (data) {
+  let totalNumOfOnes = 0;
 
-//   for (let num of data) {
-//     if (num === 1) {
-//       totalNumOfOnes += 1;
-//     }
-//   }
+  for (let num of data) {
+    if (num === 1) {
+      totalNumOfOnes += 1;
+    }
+  }
 
-//   console.log("totalNumOfOnes", totalNumOfOnes);
+  console.log("totalNumOfOnes", totalNumOfOnes);
 
-//   let maxOnesInWindow = 0;
-//   let currentOnesInWindow = 0;
-//   let windowSize = totalNumOfOnes;
+  let maxOnesInWindow = 0;
+  let currentOnesInWindow = 0;
+  let windowSize = totalNumOfOnes;
 
-//   for (let i = 0; i < windowSize; i++) {
-//     currentOnesInWindow += data[i];
-//   }
+  for (let i = 0; i < windowSize; i++) {
+    currentOnesInWindow += data[i];
+  }
 
-//   console.log("currentOnesInWindow", currentOnesInWindow);
-//   console.log("currentOnesInWindow array", data.slice(0, windowSize));
+  console.log("currentOnesInWindow", currentOnesInWindow);
+  console.log("currentOnesInWindow array", data.slice(0, windowSize));
 
-//   maxOnesInWindow = currentOnesInWindow;
+  maxOnesInWindow = currentOnesInWindow;
 
-//   for (let i = windowSize; i < data.length; i++) {
-//     move_window = data[i] - data[i - windowSize];
-//     currentOnesInWindow += move_window;
-//     maxOnesInWindow = Math.max(maxOnesInWindow, currentOnesInWindow);
-//   }
+  for (let i = windowSize; i < data.length; i++) {
+    move_window = data[i] - data[i - windowSize];
+    currentOnesInWindow += move_window;
+    maxOnesInWindow = Math.max(maxOnesInWindow, currentOnesInWindow);
+  }
 
-//   console.log("maxOnesInWindow", maxOnesInWindow);
+  console.log("maxOnesInWindow", maxOnesInWindow);
 
-//   return windowSize - maxOnesInWindow;
-// };
+  return windowSize - maxOnesInWindow;
+};
 
 var minSwaps = function(data) {
   // Count total number of ones
