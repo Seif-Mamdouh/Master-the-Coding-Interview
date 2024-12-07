@@ -1,3 +1,4 @@
+// O(V + E) Time | O(V) Space
 function numIslands(grid) {
     if (!grid || grid.length === 0) {
         return 0;
@@ -19,6 +20,7 @@ function numIslands(grid) {
     return numIslands;
 }
 
+// O(V + E) Time | O(V) Space
 function dfs(grid, row, col, rows, cols) {
     if (row < 0 || col < 0 || row >= rows || col >= cols || grid[row][col] === '0') {
         return;

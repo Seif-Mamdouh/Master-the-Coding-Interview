@@ -16,7 +16,7 @@
 // Input: n = 5, edges = [[0,1],[1,2],[2,3],[3,4]]
 // Output: 1
 
-
+// O(V + E) Time | O(V) Space
 
 var countComponents = function (n, edges) {
 

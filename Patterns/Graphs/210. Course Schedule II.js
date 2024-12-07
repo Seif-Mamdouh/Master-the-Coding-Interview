@@ -1,3 +1,4 @@
+// O(V + E) Time | O(V) Space
 function findOrder(numCourses, prerequisites) {
     const adjList = new Array(numCourses).fill().map(() => []);
     for (let [course, prereq] of prerequisites) {
