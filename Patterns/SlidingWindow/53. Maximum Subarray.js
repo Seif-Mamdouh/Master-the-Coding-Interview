@@ -1,3 +1,28 @@
+var maxSubArray = function(nums) {
+
+  if(nums.length === 1){
+      return nums[0]
+  }
+
+  
+  let windowSum = 0;
+  let start = 0;
+  let result = Number.NEGATIVE_INFINITY;
+
+
+  for(let end = 0; end < nums.length; end++){
+      windowSum += nums[end];
+      result = Math.max(result, windowSum);
+
+      while(windowSum < 0){
+          windowSum -= nums[start];
+          start+=1
+      }
+  }
+
+  return result;   
+};
+
 // 53. Maximum Subarray
 
 var maxSubArray = function (nums) {

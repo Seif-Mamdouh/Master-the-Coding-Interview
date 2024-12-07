@@ -26,7 +26,6 @@ function merge(intervals: number[][]): number[][] {
 // O(n log n) time | O(n) space
 function merge(intervals: number[][]): number[][] {
 
-    // let sort = intervals.sort((a,b) => a - b); 
     intervals.sort((a, b) => a[0] - b[0]);
 
     let array = [intervals[0]]
